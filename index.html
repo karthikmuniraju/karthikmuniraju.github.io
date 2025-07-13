@@ -3,127 +3,728 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karthik M - Full Stack Developer</title>
+    <title>Karthik M | Full Stack Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #2563eb; --dark: #1e293b; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', system-ui; line-height: 1.6; color: #334155; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+        }
         
-        /* Header */
-        header { background: var(--dark); color: white; padding: 2rem 0; }
-        .hero { display: flex; align-items: center; gap: 2rem; }
-        .hero-text h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .contact-bar { display: flex; gap: 1.5rem; margin-top: 1rem; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
         
-        /* Sections */
-        section { padding: 3rem 0; border-bottom: 1px solid #e2e8f0; }
-        h2 { color: var(--primary); margin-bottom: 1.5rem; font-size: 1.8rem; }
+        body {
+            background-color: #f1f5f9;
+            color: #334155;
+            line-height: 1.6;
+        }
         
-        /* Skills Grid */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
-        .skill-card { background: #f8fafc; border-radius: 8px; padding: 1.5rem; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
         
-        /* Timeline */
-        .timeline { position: relative; padding-left: 30px; }
-        .timeline::before { content: ''; position: absolute; left: 7px; height: 100%; width: 2px; background: var(--primary); }
-        .timeline-item { position: relative; margin-bottom: 2rem; }
-        .timeline-item::before { content: ''; position: absolute; left: -30px; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: var(--primary); }
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 160px 0 100px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-title {
+            font-size: 1.8rem;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        .profile-img {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .profile-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Skills Section */
+        .skills {
+            background-color: white;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-card {
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .skill-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+        
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .skill-card ul {
+            list-style-type: none;
+        }
+        
+        .skill-card li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-card li::before {
+            content: "▹";
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary);
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            width: 0;
+            height: 0;
+            top: 30px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -15px;
+            border-width: 15px 0 15px 15px;
+            border-color: transparent transparent transparent white;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -15px;
+            border-width: 15px 15px 15px 0;
+            border-color: transparent white transparent transparent;
+        }
+        
+        .timeline-date {
+            background: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .timeline-content h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .timeline-content ul {
+            padding-left: 20px;
+        }
+        
+        .timeline-content li {
+            margin-bottom: 10px;
+        }
+        
+        /* Resume Section */
+        .resume {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .resume .section-header h2 {
+            color: white;
+        }
+        
+        .resume .section-header p {
+            color: #cbd5e1;
+        }
+        
+        .resume-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .resume-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .resume-box p {
+            margin-bottom: 30px;
+            color: #cbd5e1;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 30px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-top: 30px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 20px;
+                left: 0 !important;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -15px;
+                border-width: 15px 15px 15px 0;
+                border-color: transparent white transparent transparent;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-title {
+                font-size: 1.4rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="container hero">
-            <div class="hero-text">
-                <h1>Karthik M</h1>
-                <h2>Full Stack Developer (Java Spring Boot & Angular)</h2>
-                <div class="contact-bar">
-                    <span>📞 (+91) 9972503858</span>
-                    <span>✉️ mkarthik2000@icloud.com</span>
-                    <span>📍 Bengaluru, India</span>
+        <div class="container">
+            <nav>
+                <div class="logo">KARTHIK<span>.</span>M</div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#resume">Resume</a>
                 </div>
-            </div>
+            </nav>
         </div>
     </header>
 
-    <main class="container">
-        <!-- Professional Summary -->
-        <section>
-            <h2>Professional Profile</h2>
-            <p>Full Stack Developer with 3+ years at Infosys Finacle specializing in banking solutions. Expertise in Java Spring Boot, Angular (TypeScript), and WaveMaker for building secure, scalable financial applications. Delivered 20% productivity gains through agile development of RM Workbench.</p>
-        </section>
-
-        <!-- Skills Section -->
-        <section>
-            <h2>Technical Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3>Frontend</h3>
-                    <ul>
-                        <li>Angular (TypeScript)</li>
-                        <li>HTML5/CSS3</li>
-                        <li>JavaScript (ES6+)</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <h3>Backend</h3>
-                    <ul>
-                        <li>Java Spring Boot</li>
-                        <li>REST APIs</li>
-                        <li>Spring Security</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <h3>DevOps</h3>
-                    <ul>
-                        <li>Jenkins CI/CD</li>
-                        <li>Git</li>
-                        <li>Docker</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience -->
-        <section>
-            <h2>Professional Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h3>Infosys Ltd. | Senior Systems Engineer</h3>
-                    <p>Oct 2024 - Present</p>
-                    <ul>
-                        <li>Developed 18+ REST APIs for Finacle banking solutions</li>
-                        <li>Reduced transaction processing time by 25%</li>
-                    </ul>
-                </div>
-                <div class="timeline-item">
-                    <h3>Infosys Ltd. | Systems Engineer</h3>
-                    <p>Jun 2022 - Sep 2024</p>
-                    <ul>
-                        <li>Customized ICICI Bank's RM Workbench</li>
-                        <li>Improved system efficiency by 20%</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Call to Action -->
-        <section style="text-align: center;">
-            <h2>Get My Full Resume</h2>
-            <a href="https://github.com/karthikmuniraju/karthikmuniraju.github.io/blob/main/Karthik_m_resume.pdf.pdf" download style="display: inline-block; background: var(--primary); color: white; padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: 600; margin-top: 1rem;">
-                Download Resume (PDF)
-            </a>
-        </section>
-    </main>
-
-    <footer style="background: var(--dark); color: white; text-align: center; padding: 2rem 0; margin-top: 2rem;">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <p>© 2024 Karthik M | Full Stack Developer</p>
-            <div style="margin-top: 1rem;">
-                <a href="https://linkedin.com/in/yourprofile" style="color: #93c5fd;">LinkedIn</a> | 
-                <a href="https://github.com/yourprofile" style="color: #93c5fd;">GitHub</a>
+            <div class="hero-content">
+                <h1>Full Stack Developer</h1>
+                <div class="hero-title">Specializing in Java Spring Boot & Angular for Banking Solutions</div>
+                <div class="hero-btns">
+                    <a href="#resume" class="btn btn-primary">Download Resume</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
             </div>
         </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Full Stack Developer with expertise in building secure and scalable banking solutions</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Karthik M</h3>
+                    <p>Experienced Senior Systems Engineer with a proven track record at Infosys in the Banking Domain. Proficient in WaveMaker implementation with Java, adept at crafting secure, scalable, and intuitive banking products using modern web technologies.</p>
+                    <p>Notable contributions include optimizing web applications, elevating performance, and enriching user engagement within the financial sector. Skilled in collaborating across teams to deliver seamless digital banking solutions while ensuring compliance with industry security standards.</p>
+                    <p>Seeking opportunities to expand both frontend and backend expertise, explore modern frameworks, and spearhead innovative banking solutions to propel digital transformation within the finance industry.</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> (+91) 9972503858</p>
+                        <p><i class="fas fa-envelope"></i> mkarthik2000@icloud.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Bengaluru, India</p>
+                    </div>
+                </div>
+                <div class="profile-img">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Karthik M">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Skills</h2>
+                <p>My expertise across various domains of software development</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fab fa-angular"></i>
+                    <h3>Frontend Development</h3>
+                    <ul>
+                        <li>Angular (TypeScript)</li>
+                        <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                        <li>jQuery, Responsive Design</li>
+                        <li>Angular Material, Reactive Forms</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-server"></i>
+                    <h3>Backend Development</h3>
+                    <ul>
+                        <li>Java, Spring Boot</li>
+                        <li>Spring Security, JWT</li>
+                        <li>RESTful API Development</li>
+                        <li>Microservices Architecture</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Database & DevOps</h3>
+                    <ul>
+                        <li>MySQL, Spring Data JPA</li>
+                        <li>Jenkins CI/CD, Git</li>
+                        <li>Docker, Unix/Linux</li>
+                        <li>WaveMaker Implementation</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-building"></i>
+                    <h3>Banking Domain</h3>
+                    <ul>
+                        <li>Infosys Finacle Expertise</li>
+                        <li>Banking Product Development</li>
+                        <li>Financial Security Standards</li>
+                        <li>Digital Banking Solutions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Experience</h2>
+                <p>My journey in the software development industry</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Oct 2024 - Present</span>
+                        <h3>Senior Systems Engineer</h3>
+                        <h4>Infosys Finacle</h4>
+                        <ul>
+                            <li>Developed 15+ REST APIs for banking applications using Spring Boot</li>
+                            <li>Reduced transaction processing time by 25% through optimization</li>
+                            <li>Led Agile team of 5 developers for Finacle customization</li>
+                            <li>Implemented JWT authentication and role-based access control</li>
+                            <li>Enhanced system security in compliance with banking regulations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Jun 2022 - Sep 2024</span>
+                        <h3>System Engineer</h3>
+                        <h4>Infosys Finacle</h4>
+                        <ul>
+                            <li>Customized ICICI Bank's RM Workbench, delivering project 2 months early</li>
+                            <li>Improved system efficiency by 20% through Angular optimization</li>
+                            <li>Completed comprehensive training program in full stack development</li>
+                            <li>Acquired hands-on experience in Java Spring Boot and Angular</li>
+                            <li>Specialized in WaveMaker implementation and Unix log extraction</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Key Projects</h2>
+                <p>Notable projects demonstrating my technical expertise</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>RM Workbench</h3>
+                    <p>Banking product development using Angular & Java Fullstack</p>
+                    <ul>
+                        <li>Orchestrated cross-functional team to accomplish project within 18 months</li>
+                        <li>Drove 20% surge in productivity through UI improvements</li>
+                        <li>Introduced agile methodologies, reducing delivery time by 15%</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-university"></i>
+                    <h3>ICICI Bank Customization</h3>
+                    <p>RM Workbench customization for ICICI Bank</p>
+                    <ul>
+                        <li>Developed customizations resulting in 20% increase in efficiency</li>
+                        <li>Led project team to complete customization within 6 months</li>
+                        <li>Enhanced user experience and functionality for banking operations</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Infy eKart</h3>
+                    <p>Full Stack E-commerce Web Application</p>
+                    <ul>
+                        <li>Developed using Angular, Spring Boot, and MySQL</li>
+                        <li>Implemented user authentication and cart management</li>
+                        <li>Achieved 98% test coverage for REST APIs</li>
+                        <li>Reduced build time by 40% via Jenkins pipelines</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="section resume">
+        <div class="container">
+            <div class="section-header">
+                <h2>Download My Resume</h2>
+                <p>Get a comprehensive overview of my skills and experience</p>
+            </div>
+            <div class="resume-box">
+                <h3>Karthik M - Full Stack Developer</h3>
+                <p>Professionally optimized resume with ATS-friendly formatting highlighting my experience in banking solutions development using Java Spring Boot and Angular.</p>
+                <a href="https://github.com/karthikmuniraju/karthikmuniraju.github.io/blob/main/Karthik_m_resume.pdf.pdf" class="btn btn-primary" target="_blank">Download Resume (PDF)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="logo" style="font-size: 2rem; margin-bottom: 20px;">KARTHIK.M</div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#resume">Resume</a>
+                <a href="#">Projects</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="contact-info" style="margin-bottom: 20px;">
+                <p><i class="fas fa-envelope"></i> mkarthik2000@icloud.com</p>
+                <p><i class="fas fa-phone"></i> (+91) 9972503858</p>
+            </div>
+            <div class="copyright">© 2024 Karthik M. All Rights Reserved.</div>
+        </div>
     </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'white';
+            }
+        });
+    </script>
 </body>
 </html>
