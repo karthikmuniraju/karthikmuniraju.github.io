@@ -6,13 +6,23 @@
     <title>Karthik M - Full Stack Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Dark Theme Variables (Default and only theme) */
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #94a3b8;
-            --success: #10b981;
+            --primary: #8a2be2; /* A vibrant purple/violet like in the image */
+            --primary-dark: #6a1aae; /* Darker shade of primary */
+            --dark: #f8fafc; /* Light text for dark background */
+            --light: #1a202c; /* Background for lighter elements within dark theme */
+            --gray: #94a3b8; /* Retaining existing gray for subtle text */
+            --success: #34d399; /* Slightly lighter green for highlights */
+            --body-bg: #111111; /* Very dark background, almost black */
+            --text-color: #e2e8f0; /* Lighter text color for readability */
+            --card-bg: #222222; /* Darker card background */
+            --header-bg: #222222; /* Darker header background */
+            --shadow-light: rgba(0, 0, 0, 0.5); /* More pronounced shadows for depth */
+            --shadow-dark: rgba(0, 0, 0, 0.4); /* Slightly less pronounced for cards */
+            --gradient-start: #111111;
+            --gradient-end: #1a202c; /* Subtle gradient for hero/resume sections */
+            --border-color: rgba(255, 255, 255, 0.1); /* Subtle border for dividers/outlines */
         }
         
         * {
@@ -23,9 +33,10 @@
         }
         
         body {
-            background-color: #f1f5f9;
-            color: #334155;
+            background-color: var(--body-bg);
+            color: var(--text-color);
             line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
         }
         
         .container {
@@ -36,8 +47,8 @@
         
         /* Header */
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--header-bg);
+            box-shadow: 0 2px 10px var(--shadow-light);
             position: fixed;
             width: 100%;
             top: 0;
@@ -55,7 +66,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--dark);
+            color: var(--dark); /* Use --dark for primary text color */
         }
         
         .logo span {
@@ -69,7 +80,7 @@
         
         .nav-links a {
             text-decoration: none;
-            color: var(--dark);
+            color: var(--text-color);
             font-weight: 500;
             transition: color 0.3s;
         }
@@ -77,13 +88,14 @@
         .nav-links a:hover {
             color: var(--primary);
         }
-        
+
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
             color: white;
             padding: 180px 0 100px;
             text-align: center;
+            border-bottom: 1px solid var(--border-color); /* Subtle border like in the image */
         }
         
         .hero-content {
@@ -95,11 +107,12 @@
             font-size: 3.5rem;
             margin-bottom: 20px;
             line-height: 1.2;
+            color: var(--dark); /* Ensure heading is light */
         }
         
         .hero-title {
             font-size: 1.8rem;
-            color: #cbd5e1;
+            color: var(--gray); /* Use gray for sub-heading */
             margin-bottom: 30px;
         }
         
@@ -122,23 +135,26 @@
         .btn-primary {
             background-color: var(--primary);
             color: white;
+            border: none; /* Remove default border */
         }
         
         .btn-primary:hover {
             background-color: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px var(--shadow-light);
         }
         
         .btn-outline {
             border: 2px solid var(--primary);
             color: var(--primary);
+            background: transparent;
         }
         
         .btn-outline:hover {
             background-color: var(--primary);
             color: white;
             transform: translateY(-3px);
+            box-shadow: 0 10px 20px var(--shadow-light);
         }
         
         /* Sections */
@@ -181,13 +197,15 @@
         
         .about-text p {
             margin-bottom: 20px;
+            color: var(--text-color);
         }
         
         .profile-img {
             flex: 1;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 40px var(--shadow-light);
+            border: 1px solid var(--border-color); /* Added border to image */
         }
         
         .profile-img img {
@@ -198,7 +216,7 @@
         
         /* Skills Section */
         .skills {
-            background-color: white;
+            background-color: var(--body-bg); /* Keep skills section background consistent with body */
         }
         
         .skills-grid {
@@ -208,15 +226,17 @@
         }
         
         .skill-card {
-            background: white;
+            background: var(--card-bg);
             border-radius: 15px;
             padding: 35px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px var(--shadow-dark);
             transition: transform 0.3s;
+            border: 1px solid var(--border-color); /* Subtle border for cards */
         }
         
         .skill-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 40px var(--shadow-light); /* More intense shadow on hover */
         }
         
         .skill-card i {
@@ -239,6 +259,7 @@
             padding: 8px 0;
             display: flex;
             align-items: center;
+            color: var(--gray); /* Use gray for list items */
         }
         
         .skill-card li::before {
@@ -281,11 +302,12 @@
         }
         
         .timeline-content {
-            background: white;
+            background: var(--card-bg);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px var(--shadow-dark);
             position: relative;
+            border: 1px solid var(--border-color); /* Subtle border for timeline content */
         }
         
         .timeline-content::after {
@@ -300,13 +322,13 @@
         .timeline-item:nth-child(odd) .timeline-content::after {
             right: -15px;
             border-width: 15px 0 15px 15px;
-            border-color: transparent transparent transparent white;
+            border-color: transparent transparent transparent var(--card-bg);
         }
         
         .timeline-item:nth-child(even) .timeline-content::after {
             left: -15px;
             border-width: 15px 15px 15px 0;
-            border-color: transparent white transparent transparent;
+            border-color: transparent var(--card-bg) transparent transparent;
         }
         
         .timeline-date {
@@ -336,6 +358,7 @@
         
         .timeline-content li {
             margin-bottom: 10px;
+            color: var(--gray);
         }
         
         /* Projects */
@@ -346,15 +369,17 @@
         }
         
         .project-card {
-            background: white;
+            background: var(--card-bg);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px var(--shadow-dark);
             transition: transform 0.3s;
+            border: 1px solid var(--border-color); /* Subtle border for cards */
         }
         
         .project-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 40px var(--shadow-light); /* More intense shadow on hover */
         }
         
         .project-header {
@@ -391,53 +416,59 @@
         }
         
         .tech-item {
-            background: #e0f2fe;
+            background: var(--light); /* Use light variable for a contrasting tag background */
             color: var(--primary);
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
+            border: 1px solid var(--primary); /* Border for tech items */
         }
         
         /* Resume Section */
         .resume {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
             color: white;
             text-align: center;
+            border-top: 1px solid var(--border-color); /* Subtle border */
         }
         
         .resume .section-header h2 {
-            color: white;
+            color: var(--dark);
         }
         
         .resume .section-header p {
-            color: #cbd5e1;
+            color: var(--gray);
         }
         
         .resume-box {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--card-bg); /* Use card-bg for resume box */
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 50px;
             max-width: 800px;
             margin: 0 auto;
+            box-shadow: 0 10px 30px var(--shadow-dark);
+            border: 1px solid var(--border-color); /* Subtle border */
         }
         
         .resume-box h3 {
             font-size: 1.8rem;
             margin-bottom: 20px;
+            color: var(--dark);
         }
         
         .resume-box p {
             margin-bottom: 30px;
-            color: #cbd5e1;
+            color: var(--text-color);
         }
         
         /* Footer */
         footer {
-            background: var(--dark);
+            background: var(--body-bg); /* Consistent very dark background */
             color: white;
             padding: 50px 0 30px;
             text-align: center;
+            border-top: 1px solid var(--border-color); /* Subtle border */
         }
         
         .social-links {
@@ -454,15 +485,18 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+            background: var(--card-bg); /* Use card-bg for social icons */
+            color: var(--primary); /* Primary color for icons */
             font-size: 1.3rem;
             transition: all 0.3s;
+            border: 1px solid var(--border-color); /* Subtle border */
         }
         
         .social-links a:hover {
             background: var(--primary);
+            color: white;
             transform: translateY(-5px);
+            box-shadow: 0 5px 15px var(--shadow-light);
         }
         
         .footer-links {
@@ -474,7 +508,7 @@
         }
         
         .footer-links a {
-            color: #cbd5e1;
+            color: var(--gray);
             text-decoration: none;
             transition: color 0.3s;
         }
@@ -484,7 +518,7 @@
         }
         
         .copyright {
-            color: #94a3b8;
+            color: var(--gray);
             font-size: 0.9rem;
             margin-top: 30px;
         }
@@ -510,7 +544,7 @@
             .timeline-item:nth-child(even) .timeline-content::after {
                 left: -15px;
                 border-width: 15px 15px 15px 0;
-                border-color: transparent white transparent transparent;
+                border-color: transparent var(--card-bg) transparent transparent;
             }
         }
         
@@ -535,7 +569,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <nav>
@@ -547,25 +580,23 @@
                     <a href="#projects">Projects</a>
                     <a href="#resume">Resume</a>
                 </div>
-            </nav>
+                </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1>Karthik M</h1>
                 <div class="hero-title">Senior Systems Engineer | Full Stack Developer (Java Spring Boot & Angular)</div>
                 <div class="hero-btns">
-                    <a href="#resume" class="btn btn-primary">Download Resume</a>
+                    <a href="Karthik.M - Full Stack Developer - AGS.pdf" class="btn btn-primary" download>Download Resume</a>
                     <a href="#contact" class="btn btn-outline">Contact Me</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
             <div class="section-header">
@@ -592,13 +623,12 @@
                     </div>
                 </div>
                 <div class="profile-img">
-                    <img src="asset/images/da455923-c0d4-4e81-befd-d7e65c4360ab.jpg" alt="Karthik M">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Karthik M">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="section skills">
         <div class="container">
             <div class="section-header">
@@ -650,7 +680,6 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
     <section id="experience" class="section">
         <div class="container">
             <div class="section-header">
@@ -688,7 +717,6 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="section skills">
         <div class="container">
             <div class="section-header">
@@ -760,7 +788,6 @@
         </div>
     </section>
 
-    <!-- Certifications Section -->
     <section class="section">
         <div class="container">
             <div class="section-header">
@@ -793,7 +820,6 @@
         </div>
     </section>
 
-    <!-- Resume Section -->
     <section id="resume" class="section resume">
         <div class="container">
             <div class="section-header">
@@ -803,20 +829,19 @@
             <div class="resume-box">
                 <h3>Karthik M - Full Stack Developer</h3>
                 <p>Professionally optimized resume with ATS-friendly formatting highlighting my experience in banking solutions development using Java Spring Boot and Angular.</p>
-                <a href="https://github.com/karthikmuniraju/karthikmuniraju.github.io/blob/main/resume.pdf" class="btn btn-primary" download>Download Resume (PDF)</a>
+                <a href="Karthik.M - Full Stack Developer - AGS.pdf" class="btn btn-primary" download>Download Resume (PDF)</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="logo" style="font-size: 2rem; margin-bottom: 20px;">KARTHIK.M</div>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/karthik-m-24077b219/"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/karthikmuniraju"><i class="fab fa-github"></i></a>
-<!--                 <a href="#"><i class="fab fa-twitter"></i></a> -->
-<!--                 <a href="#"><i class="fab fa-instagram"></i></a> -->
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
             <div class="footer-links">
                 <a href="#about">About</a>
@@ -845,15 +870,15 @@
             });
         });
         
-        // Header scroll effect
+        // Header scroll effect (adjusted for dark theme background)
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 5px 20px var(--shadow-light)';
+                header.style.background = 'var(--header-bg)'; 
             } else {
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-                header.style.background = 'white';
+                header.style.boxShadow = '0 2px 10px var(--shadow-light)';
+                header.style.background = 'var(--header-bg)'; 
             }
         });
     </script>
