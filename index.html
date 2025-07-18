@@ -1,435 +1,494 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Karthik M – Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="asset/images/A9D54B6C-0FF5-421F-BC1C-9D0726E6529B.PNG" type="image/x-icon"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <!-- Modern font stack -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --primary: #6658f7;
       --secondary: #20e3b2;
       --bg: #1a1a2e;
-      --card-bg: rgba(40,32,85,0.97);
-      --surface: #232246ee;
+      --surface: #181828;
+      --card-bg: #232246ed;
+      --glass: rgba(80, 70, 155, 0.20);
+      --surface-glass: rgba(40,32,85,0.84);
       --text: #f6f7fc;
       --muted: #b2b5c9;
       --accent: #f97316;
-      --radius: 24px;
+      --radius: 22px;
+      --shadow: 0 8px 40px #6658f74a;
     }
-    html, body {
+    body {
       margin: 0; padding: 0;
-      font-family: 'Inter', Arial, sans-serif;
-      background: var(--bg);
+      background: linear-gradient(135deg,#232246 0, #28274a 100%);
       color: var(--text);
-      min-height: 100vh;
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 18px;
+      letter-spacing: .02em;
     }
-    /* Mac-style boot loader */
+    /* Loader uses favicon as icon in center */
     #loader {
       position: fixed; inset: 0;
       background: var(--bg);
+      z-index: 9999;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      z-index: 9999;
+      align-items: center;
       transition: opacity 0.6s;
     }
     #loader.fade-out {
       opacity: 0;
       pointer-events: none;
     }
-    .macbar-loader-container {
-      margin-bottom: 2em;
-      min-width: 320px;
-      padding: 2em 2.5em 2em 2.5em;
-      background: rgba(36,32,64,0.97);
+    .loader-favicon-icon {
+      width: 60px;
+      height: 60px;
       border-radius: 22px;
-      box-shadow: 0 6px 32px #6658f742, 0 2px 80px #26214617;
-      text-align: center;
+      margin-bottom: 1.1em;
+      box-shadow: 0 3px 20px #6658f78f, 0 5px 40px #201f324a;
+      animation: fadePulse 1.3s infinite alternate;
+      display: block;
+      object-fit: cover;
+      background: #fff;
+      border: 3px solid var(--primary);
     }
-    .macbar-logo {
-      width:60px;height:60px;
-      border-radius:14px;background:#191938;
-      display:flex;align-items:center;justify-content:center;
-      margin:0 auto 1.2em auto;font-size:2em;color:var(--primary);
-      box-shadow:0 1px 16px #6658f72c;
+    @keyframes fadePulse {
+      0% { opacity: 0.80; transform: scale(1) }
+      100% { opacity: 1; transform: scale(1.13); box-shadow:0 7px 40px #6658f79f;}
     }
-    .macbar {
-      width: 230px;
-      height: 17px;
-      background: #191938;
-      border-radius: 10px;
-      margin: 0 auto 0.9em auto;
-      box-shadow: 0 2px 10px #5f57ff28;
-      overflow: hidden;
-      position: relative;
-      border: 2px solid #262055;
-      display: flex;
-      align-items: center;
+    .loader-percentage {
+      font-size: 1.35em; color: var(--primary); font-weight: 600;
+      letter-spacing: .08em; text-shadow: 0 1px 12px #b2b5c955;
+      margin-bottom: 0.35em;
     }
-    .macbar-progress {
-      background-image: linear-gradient(90deg,#6658f7 0%, #20e3b2 100%);
-      height: 100%;
-      border-radius: 9px;
-      transition: width 0.35s cubic-bezier(.43,.75,.38,1.02);
-      box-shadow: 0 1px 12px #6658f762;
-      width: 0;
+    #loader p { color:#f6f7fa; opacity:.79; font-size:1em;}
+
+    /* Navigation */
+    .navbar {
+      display:flex; justify-content:space-between; max-width:1180px; margin: 1.3em auto 0;
+      align-items:center; border-radius:80px; background:rgba(37,34,58,0.64); padding: 0.8em 2.3em 0.8em 2.3em;
+      box-shadow:0 2px 44px #2c2b3920;
+      font-family: 'Space Grotesk', 'Inter', Arial, sans-serif;
     }
-    .macbar-label {
-      font-size: 1.22em;
-      color: var(--primary);
-      font-weight: bold;
-      margin-bottom: 0.7em;
-      letter-spacing: 0.06em;
-      text-shadow:0 2px 9px #1818508f;
+    .navbar .logo {
+      color: var(--primary); font-weight: bold;
+      font-size: 2rem; letter-spacing: 0.02em;
+      text-shadow: 0 3px 24px #6658f79f;
+      display: flex; align-items: center; gap: 0.9em;
     }
-    #loader p {
-      color: var(--muted);
-      opacity: .83;
-      font-size: 1.12em;
-      margin-top:1.5em;
+    .navbar ul {
+      display: flex; gap: 1.6em; list-style: none; margin: 0; padding: 0;
+      font-weight: 600; font-size: 1em;
     }
-    /* Full-page hero card */
+    .navbar a {
+      color: var(--text);
+      background: none;
+      text-decoration: none; border-radius: 16px; padding: 0.48em 1.22em;
+      transition: background 0.14s, color 0.13s;
+      font-family: inherit;
+    }
+    .navbar a:hover, .navbar a.active { background:var(--primary); color:#fff; }
+
+    /* Hero Card - Best UI/UX */
     .hero-card {
-      max-width: 680px;
-      min-height: 85vh;
-      height: 90vh;
-      box-sizing: border-box;
-      background: linear-gradient(120deg, #232246de 60%, #32274abc 100%);
-      border-radius: var(--radius);
-      margin: 34px auto 0 auto;
-      box-shadow: 0 8px 32px #6658f751, 0 1.5px 80px #312f43ad;
-      padding: 64px 36px 36px 36px;
-      display: flex;
-      flex-direction: column;
+      display:flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      border: 1.7px solid #6658f71a;
-      position:relative;
-      overflow:hidden;
+      max-width: 940px;
+      background: linear-gradient(120deg, #232246f7 60%, #28274ad6 100%);
+      border-radius: 42px;
+      margin: 58px auto 38px auto;
+      box-shadow: 0 10px 50px #6658f75c, 0 2.5px 90px #201f32a0;
+      padding: 55px 30px 43px 42px;
+      position:relative; overflow:hidden;
+      border: 2.2px solid #6658f71c;
+      transition: box-shadow .21s;
+      min-height:315px;
+      gap: 54px;
     }
-    .avatar {
-      width: 128px; height: 128px;
-      border-radius: 27px; object-fit: cover;
-      border: 4px solid var(--primary);
-      margin-bottom: 1.2em;
-      background: #fff;
-      box-shadow: 0 0 0 14px #23224699;
+
+    .hero-img-stack {
+      flex:0 0 225px; display: flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:26px;
     }
-    .hero-name {
-      font-family: 'Space Grotesk', 'Inter', Arial, sans-serif;
-      font-size:2.25em; font-weight:900; color:var(--primary);
-      margin: .1em 0 .23em 0; 
-      text-shadow:0 2px 16px #6658f73a;
-      letter-spacing:.01em;
+    .avatar-spotlight {
+      border-radius: 29px; width:132px; height:132px; background: radial-gradient(circle at 74% 16%,#6658f73a 54%,#232246 93%);
+      box-shadow: 0 0 0 15px #6658f738, 0 0 40px #a889fa48;
+      display:flex;align-items:center;justify-content:center;position:relative;
     }
-    .hero-role {
-      color: var(--secondary); font-size: 1.16em; font-weight: 600;
-      margin-bottom: .7em;
-      font-family:'Space Grotesk', Arial, sans-serif;
+    .hero-avatar {
+      width:114px; height:114px; border-radius:23px; object-fit: cover; background:#fff;
+      border: 4px solid #6658f7;
+      box-shadow: 0 0 18px #6658f788, 0 6px 29px #5d4eaf82;
+    }
+    .hero-socials {
+      display:flex;gap:21px;justify-content:center;
+      margin-top:10px;
+    }
+    .hero-socials a {
+      color: var(--primary); background:rgba(44,34,70,0.09);
+      font-size:1.38em;
+      border-radius:22px; padding:7px 10px;
+      transition: background 0.22s,color 0.18s;
+    }
+    .hero-socials a:hover { color:var(--secondary); background:rgba(44,34,70,0.20);}
+    .hero-main-content {
+      flex:1 1 330px;
+      display:flex;flex-direction:column;align-items:flex-start;min-width:0;
+    }
+    .hero-badge {
+      background: linear-gradient(93deg,#20e3b2 5%,#6658f7 96%);
+      color:#232246;font-weight:bold;border-radius:13px;font-size:1em;
+      letter-spacing:.09em;padding:0.41em 1.36em;
+      margin-bottom:1.5em;box-shadow:0 1px 11px #6658f712;
+      font-family:'Space Grotesk',Arial,sans-serif;
+      box-shadow:0 1px 6px #6658f70c;
+    }
+    .hero-title {
+      font-family:'Space Grotesk','Inter',sans-serif;
+      font-size:2.85em;
+      font-weight:900;
+      letter-spacing:.017em;
+      line-height:1.14;
+      margin:0 0 0.51em 0;
+      background: linear-gradient(91deg,#fff 68%,#20e3b2 100%);
+      color: transparent; -webkit-background-clip:text; background-clip:text;
+      text-shadow: 0 1.5px 14px #6658f74a;
+      max-width:99%;
+    }
+    .hero-title-highlight {
+      color: var(--secondary);
+      -webkit-background-clip:text;background-clip:text;
+      font-style: italic; font-weight:900; filter:brightness(1.13);
     }
     .hero-desc {
-      font-size:1.11em; color:var(--text-sub); margin-bottom:2.2em;
-      text-shadow:0 1px 10px #29285c49;
+      color: var(--muted);
+      font-size: 1.24em;
+      margin-bottom: 1.9em;
+      max-width: 540px;
+      line-height: 1.68;
+      text-shadow: 0 1px 9px #23224636;
+      font-family:'Inter',Arial,sans-serif;
     }
     .cta-btns {
-      display: flex; gap: 1.17em; justify-content: center; flex-wrap: wrap; margin-bottom: 9px;
-      margin-top: 1.1em;
+      display: flex; gap: 1.05em; align-items: center; flex-wrap: wrap; margin-bottom:1.2em;
     }
     .cta-btn {
-      padding: 0.88em 2.1em; border-radius:32px; border:none; outline:none;
-      background: var(--primary); color:#fff; font-weight:700; font-size:1.08em;
-      text-decoration:none; margin-bottom:0.65em;
-      transition:background .18s;
-      letter-spacing: .02em;
-      box-shadow: 0 5px 19px #6658f745;
+      padding: .80em 2.15em;
+      border-radius:30px;
+      background: var(--primary);
+      color:#fff;
+      font-weight:700;
+      font-size:1.11em;
+      margin-bottom: 0.5em;
+      letter-spacing: .03em;
+      box-shadow: 0 2px 16px #6658f722;
+      border:none; outline:none;
+      transition: background .15s,color .14s,transform .13s;
+      position:relative;
+      font-family:'Space Grotesk','Inter',Arial,sans-serif;
+    }
+    .cta-btn.resumemain {
+      background: linear-gradient(94deg,#6658f7 0,#20e3b2 92%);
+      color:#fff;font-weight:900;
     }
     .cta-btn.contact {
-      background: transparent; color: var(--primary); border:2px solid var(--primary);
+      background:transparent;
+      color:var(--primary);
+      border:2px solid var(--primary);
     }
-    .cta-btn:hover, .cta-btn:focus {
-      background: var(--secondary); color: #fff;
-      border-color: var(--secondary);
+    .cta-btn:hover,.cta-btn:focus {
+      background:var(--secondary);
+      color:#232246;
+      transform:translateY(-2px);
+      border-color:var(--secondary);
     }
-    @media(max-width:850px){
-      .hero-card{height:auto;min-height:75vh;}
-    }
-    @media(max-width:650px){
-      .hero-card{padding:19px 2vw 20px;}
-      .cta-btn{width: 94vw;}
-      .cta-btns{flex-direction:column;}
-    }
-    /* Card Section Styles + Scroll Animation */
+    .cta-btn.contact:hover { background:var(--primary); color: #fff;}
+
+    /* Scroll-animated Section Cards */
     .section-card {
-      background: var(--surface);
+      background: var(--surface-glass);
       border-radius: var(--radius);
-      box-shadow: 0 4px 24px #6658f726;
+      box-shadow: 0 4px 24px #6658f73a;
       margin: 2.25em 0;
-      padding: 2.2em 1.5em 2em 1.5em;
+      padding: 2.1em 1.54em 2.1em 1.54em;
+      border:1.2px solid #28274a38;
       opacity: 0; 
-      transform: translateX(-90px) scale(.99);
-      transition: box-shadow .19s, opacity 0.78s cubic-bezier(.39,.59,.33,.92), transform 0.74s cubic-bezier(.51,.81,.19,.96);
+      transform: translateX(-76px);
+      transition: box-shadow .19s, opacity 0.74s cubic-bezier(.37,.58,.34,.93), transform 0.74s cubic-bezier(.51,.81,.19,.96);
       box-sizing:border-box;
-      font-size:1.04em;
-      border: 1px solid #23224639;
+      backdrop-filter: blur(11px);
     }
     .section-card.visible {
       opacity: 1;
-      transform: translateX(0) scale(1);
-      box-shadow: 0 10px 38px #6658f776, 0 3.5px 80px #23224627;
+      transform: translateX(0);
+      box-shadow: 0 10px 38px #6658f769, 0 3.5px 80px #322f6530;
     }
     body.scroll-up .section-card:not(.visible) {
       opacity: 0;
-      transform: translateX(90px) scale(.985);
+      transform: translateX(76px);
     }
     .section-card h2 {
-      font-family: 'Space Grotesk', Arial, sans-serif; font-size:1.32em;
-      color:var(--primary);font-weight:900;
-      margin-bottom:1.1em;letter-spacing:.014em;
-      border-left: 6px solid var(--accent);
-      padding-left: 0.4em;
+      font-family:'Space Grotesk',Arial,sans-serif;font-size:1.18em;color:var(--primary);font-weight:800;margin-bottom: 0.94em;letter-spacing:.02em;border-left: 5px solid var(--secondary);padding-left: 0.41em;box-shadow:0 2px 0 #6658f72c;background:linear-gradient(90deg, #181828dd, #292b45bb 99%);border-radius:8px;display:inline-block;
     }
-    .skills-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;}
-    .skill-card {background:rgba(62,56,162,0.09);border-radius:14px;box-shadow:0 1px 7px #6658f71c;padding:1.12em 1em;margin-bottom:0.3em;}
-    .skill-card h3{color:var(--primary);margin:.34em 0 .48em 0;font-size:1.07em;text-align:center;}
-    .timeline {border-left:4px solid var(--primary);padding-left:20px;margin-top:.8em;}
-    .timeline-item {margin-bottom:2em;}
-    .timeline-date {color:var(--primary);font-weight:700;}
-    .timeline-item h3 {margin:0 0 0.11em 0;}
-    .timeline-item h4 {color:var(--secondary);font-size:1em;}
-    .projects-grid {display:grid;gap:1.18em;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
-    .project-card {background:rgba(54,48,147,0.17);border-radius:13px;box-shadow:0 2px 8px #6658f72e;padding:1.12em 1em 1.25em 1em;color:#ecefff;}
-    .project-header {display:flex;justify-content:space-between;align-items:center;margin-bottom:0.67em;}
-    .project-header h3{color:var(--primary);}
-    .project-duration {color:var(--secondary);}
-    .tech-stack{margin:0.42em 0;}
-    .tech-item{background:#6658f71c;color:var(--primary);padding:0.28em 0.9em;border-radius:11px;font-size:0.94em;}
-    .certs{display:grid;grid-template-columns:1fr 1fr;gap:1.1em;}
-    .cert-card {background:rgba(42,36,102,0.19);border-radius:10px;box-shadow:0 1px 6px #6658f718;padding:1em;}
-    .resume-box{background:rgba(42,36,102,0.19);border-radius:10px;box-shadow:0 1px 6px #6658f714;padding:1em;text-align:center;}
-    .resume-box h3{margin:0.4em 0 0.9em 0;color:var(--primary);}
+    .skills-grid, .projects-grid, .certs {
+      display: grid; gap: 1.17em;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+    }
+    .skill-card, .project-card, .cert-card {
+      background: #232246fa;
+      border-radius:15px;
+      padding:1.05em 1em 1.35em;
+      box-shadow: 0 1.5px 12px #6658f71a;
+      margin-bottom: 0.6em;
+      transition:box-shadow 0.17s,transform 0.14s;
+      position:relative;overflow:hidden;
+    }
+    .skill-card:hover, .project-card:hover, .cert-card:hover {
+      box-shadow: 0 10px 36px #32cdc967, 0 4.5px 64px #6658f734;
+      transform: translateY(-2.5px) scale(1.018);
+    }
+    .skill-card h3, .project-card h3, .cert-card h3 {color:var(--primary); font-family:'Space Grotesk',Arial,sans-serif;}
+    .tech-stack {margin:0.7em 0 .06em 0;}
+    .tech-item {background:#6658f719;color:var(--primary);padding:0.3em 0.97em;border-radius:9px;font-size:.98em;font-weight: 600;margin-right: 0.28em; display: inline-block;}
+    .timeline {border-left:4px solid var(--primary);padding-left:19px;margin-top:.8em;}
+    .timeline-item {margin-bottom:1.7em;}
+    .timeline-date {display:block;color:var(--secondary);font-weight:700;font-size:.97em;margin-bottom:.37em;}
+    .timeline-item h3 {margin:0 0 0.19em 0;font-size:1.06em;}
+    .timeline-item h4 { color:var(--primary);font-size:.97em;}
     /* Footer */
-    .footer {text-align:center;color:#babacd;margin:2.8em 0 1.2em 0;}
-    .social-links {display:flex;justify-content:center;gap:19px;margin-bottom:0.36em;}
-    .social-links a{color:var(--primary);font-size:1.13em;transition:color 0.13s;}
+    .footer {text-align:center; color:#babacd; margin:2.7em 0 1.1em 0;font-size:1em;padding-bottom:1em;}
+    .social-links {display:flex;justify-content:center;gap:19px;margin-bottom:0.56em;}
+    .social-links a{color:var(--primary);font-size:1.19em;transition:color 0.13s;}
     .social-links a:hover{color:var(--secondary);}
+    @media(max-width:1100px){
+      .hero-card{flex-direction:column;align-items:center;gap:33px;padding:38px 5vw 33px;}
+      .hero-main-content{align-items:center; text-align:center;}
+      .hero-img-stack{align-items:center;margin: 0 0 24px 0;}
+    }
+    @media(max-width:800px){
+      .navbar{flex-direction:column;gap:12px;padding: 0.45em 1.4em;}
+      .hero-title{font-size:1.7em;}
+      .hero-card{padding:29px 11px 29px;}
+    }
+    @media(max-width:560px){
+      .hero-avatar-panel{padding:5px;}
+      .hero-card{margin:20px 2vw;}
+      .hero-title{font-size:1.18em;}
+      .cta-btn{width:90vw;}
+    }
     @media(max-width:700px){
-      .hero-card, .section-card {max-width:99vw;padding-left:3vw;padding-right:3vw;}
-      .skills-grid, .certs, .projects-grid {grid-template-columns:1fr;}
+      .skills-grid, .projects-grid, .certs {grid-template-columns:1fr;}
+      .section-card,.hero-card{max-width:99vw;}
     }
   </style>
 </head>
 <body>
-<!-- Loader -->
+<!-- Loader with favicon-icon as loader -->
 <div id="loader">
-  <div class="macbar-loader-container">
-    <div class="macbar-logo"><i class="fas fa-laptop-code"></i></div>
-    <div class="macbar-label"><span id="loader-percentage">0%</span></div>
-    <div class="macbar"><div class="macbar-progress" id="macbar-progress"></div></div>
-  </div>
-  <p>Booting portfolio…</p>
+  <img src="asset/images/A9D54B6C-0FF5-421F-BC1C-9D0726E6529B.PNG" alt="" class="loader-favicon-icon"/>
+  <div class="loader-percentage" id="loader-percentage">0%</div>
+  <p>Loading Portfolio...</p>
 </div>
-<div class="main-content">
-  <!-- HERO CARD (full-page) -->
-  <div class="hero-card">
-    <img src="asset/images/da455923-c0d4-4e81-befd-d7e65c4360ab.jpg" class="avatar" alt="Karthik M"/>
-    <div class="hero-name">Karthik M</div>
-    <div class="hero-role">Senior Systems Engineer | Full Stack Developer (Java Spring Boot & Angular)</div>
+<div class="navbar">
+  <span class="logo"><i class="fas fa-terminal"></i> Karthik M</span>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#resume">Resume</a></li>
+  </ul>
+</div>
+<!-- Best-in-class Hero Card -->
+<div class="hero-card">
+  <div class="hero-img-stack">
+    <div class="avatar-spotlight">
+      <img src="asset/images/da455923-c0d4-4e81-befd-d7e65c4360ab.jpg" class="hero-avatar" alt="Karthik M">
+    </div>
+    <div class="hero-socials">
+      <a href="https://linkedin.com/in/karthik-m-24077b219/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/karthikmuniraju" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="mailto:mkarthik2000@icloud.com" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+  <div class="hero-main-content">
+    <div class="hero-badge">Senior Systems Engineer · Infosys</div>
+    <h1 class="hero-title">Driving Modern <span class="hero-title-highlight">Banking Tech</span><br>with Full Stack Excellence</h1>
     <div class="hero-desc">
-      Experienced engineer building robust, scalable banking systems & digital experiences.<br>
-      Specialist in Finacle, WaveMaker, Java, Angular.<br>
-      <b>Open for innovative opportunities and great teams.</b>
+      Building world-class digital products using <b>Java Spring Boot, Angular, and Cloud UI.</b><br>
+      Passionate about performance, security, and delighting users — ready for new challenges.
     </div>
     <div class="cta-btns">
-      <a href="resume.pdf" class="cta-btn" download>
-        <i class="fas fa-file-arrow-down"></i> Download Resume
+      <a href="resume.pdf" class="cta-btn resumemain" download>
+        <i class="fas fa-file-arrow-down"></i> Resume
       </a>
-      <a href="#contact" class="cta-btn contact">
-        <i class="fas fa-envelope"></i> Contact Me
-      </a>
+      <a href="#contact" class="cta-btn contact"><i class="fas fa-envelope"></i> Contact</a>
     </div>
   </div>
-  <!-- Scroll-Appearing Cards -->
-  <div id="about" class="section-card">
-    <h2>About Me</h2>
-    <ul>
-      <li>Senior Systems Engineer at Infosys (Finacle Banking).</li>
-      <li>Skilled in HTML, CSS, JavaScript, Angular, Java, Spring Boot, jQuery, WaveMaker.</li>
-      <li>Expert in web performance, security, & teams.</li>
-      <li>Keen to learn & use modern frameworks to drive transformation.</li>
-    </ul>
-    <div class="contact-info" style="margin-top:18px;">
+</div>
+<!-- Section Cards (as before, scroll-animated) -->
+<div id="about" class="section-card">
+  <h2>About Me</h2>
+  <ul>
+    <li>Senior Systems Engineer at Infosys, Banking (Finacle).</li>
+    <li>Skilled in HTML, CSS, JavaScript, Angular, Java, jQuery, Spring Boot.</li>
+    <li>Optimized web apps for performance, user engagement, and security.</li>
+    <li>Collaborative and eager for pioneering frameworks and new challenges.</li>
+    <li>Location: <b>Bengaluru, India</b></li>
+  </ul>
+</div>
+<div id="skills" class="section-card">
+  <h2>Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3><i class="fab fa-angular"></i> Frontend</h3>
       <ul>
-        <li><i class="fas fa-phone"></i> (+91) 9972503858</li>
-        <li><i class="fas fa-envelope"></i> mkarthik2000@icloud.com</li>
-        <li><i class="fas fa-map-marker-alt"></i> Bengaluru, India</li>
+        <li>Angular (TypeScript)</li><li>HTML5, CSS3</li><li>JavaScript (ES6+)</li><li>jQuery</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3><i class="fas fa-server"></i> Backend</h3>
+      <ul>
+        <li>Java, Spring Boot</li><li>Spring Security, JWT</li><li>RESTful API</li><li>Microservices</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3><i class="fas fa-database"></i> Database / DevOps</h3>
+      <ul>
+        <li>MySQL, Spring Data JPA</li><li>Jenkins, Git, Docker, Linux</li>
+        <li>Ansible, Terraform</li><li>WaveMaker Implementation</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3><i class="fas fa-building"></i> Banking Domain</h3>
+      <ul>
+        <li>Infosys Finacle Expertise</li>
+        <li>Banking Product Dev</li>
+        <li>Financial Security Standards</li>
+        <li>Digital Banking Solutions</li>
       </ul>
     </div>
   </div>
-  <div id="skills" class="section-card">
-    <h2>Technical Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <h3><i class="fab fa-angular"></i> Frontend</h3>
-        <ul>
-          <li>Angular (TypeScript)</li>
-          <li>HTML5, CSS3, JavaScript</li>
-          <li>jQuery</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <h3><i class="fas fa-server"></i> Backend</h3>
-        <ul>
-          <li>Java, Spring Boot</li>
-          <li>Spring Security, JWT, RESTful API, Microservices</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <h3><i class="fas fa-database"></i> Database & DevOps</h3>
-        <ul>
-          <li>MySQL, Spring Data JPA</li>
-          <li>Jenkins CI/CD, Git, Docker, Linux</li>
-          <li>Ansible, Terraform, WaveMaker</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <h3><i class="fas fa-building"></i> Banking Domain</h3>
-        <ul>
-          <li>Infosys Finacle Expertise</li>
-          <li>Banking Product Development</li>
-          <li>Financial Security Standards</li>
-          <li>Digital Banking Solutions</li>
-        </ul>
-      </div>
+</div>
+<div id="experience" class="section-card">
+  <h2>Professional Experience</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="timeline-date">Oct 2024 - Present</span>
+      <h3>Senior Systems Engineer</h3>
+      <h4>Infosys Finacle</h4>
+      <ul>
+        <li>Fullstack developer in Finacle, delivering secure web apps</li>
+        <li>Innovation & modern engineering, customer success focus</li>
+      </ul>
     </div>
-  </div>
-  <div id="experience" class="section-card">
-    <h2>Professional Experience</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <span class="timeline-date">Oct 2024 - Present</span>
-        <h3>Senior Systems Engineer</h3>
-        <h4>Infosys Finacle</h4>
-        <ul>
-          <li>Fullstack developer, secure & high-performance banking apps</li>
-          <li>Innovation champion, high customer experience focus</li>
-        </ul>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-date">Jun 2022 - Sep 2024</span>
-        <h3>System Engineer</h3>
-        <h4>Infosys Finacle</h4>
-        <ul>
-          <li>Trained in Java Spring Boot, Angular, WaveMaker, Unix</li>
-          <li>Hands-on software/app development & deployment</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div id="projects" class="section-card">
-    <h2>Key Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-header">
-          <h3>RM Workbench</h3><span class="project-duration">20 Months</span>
-        </div>
-        <ul>
-          <li>Angular & Java Fullstack development, Finacle specialist</li>
-          <li>Agile scrum, improved productivity 20%, delivery -15% time</li>
-        </ul>
-        <div class="tech-stack"><span class="tech-item">Angular</span> <span class="tech-item">Java</span><span class="tech-item">Finacle</span></div>
-      </div>
-      <div class="project-card">
-        <div class="project-header">
-          <h3>ICICI Bank Customization</h3><span class="project-duration">12 Months</span>
-        </div>
-        <ul>
-          <li>Customized Finacle for ICICI, +20% efficiency</li>
-          <li>Led collaborative UX improvements</li>
-        </ul>
-        <div class="tech-stack"><span class="tech-item">Java Spring Boot</span><span class="tech-item">Angular</span><span class="tech-item">Finacle</span></div>
-      </div>
-      <div class="project-card">
-        <div class="project-header">
-          <h3>Infy eKart</h3><span class="project-duration">3 Months</span>
-        </div>
-        <ul>
-          <li>Full Stack E-commerce – Angular, Spring Boot, MySQL</li>
-          <li>Secure authentication, product/cart features</li>
-        </ul>
-        <div class="tech-stack"><span class="tech-item">Java</span><span class="tech-item">Angular</span><span class="tech-item">Spring Boot</span><span class="tech-item">MySQL</span></div>
-      </div>
-    </div>
-  </div>
-  <div id="certifications" class="section-card">
-    <h2>Certifications & Education</h2>
-    <div class="certs">
-      <div class="cert-card">
-        <b>Infosys Certifications:</b>
-        <ul>
-          <li>Java-Angular Full Stack Development</li>
-          <li>Service/REST API Development with Spring Boot</li>
-          <li>Single Page Apps with Angular</li>
-        </ul>
-      </div>
-      <div class="cert-card">
-        <b>Education:</b>
-        <ul>
-          <li>B.Tech/B.E. in Civil Engineering</li>
-          <li>Visveswaraiah Technological University (VTU), 2022</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div id="resume" class="section-card">
-    <h2>Download My Resume</h2>
-    <div class="resume-box">
-      <b>Karthik M - Full Stack Developer</b>
-      <p>ATS-friendly resume, banking solutions, Java Spring Boot, Angular, Digital transformation</p>
-      <a href="resume.pdf" class="cta-btn" download>Download Resume (PDF)</a>
-    </div>
-  </div>
-  <div class="footer" id="contact">
-    <div class="social-links">
-      <a href="https://linkedin.com/in/karthik-m-24077b219/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/karthikmuniraju" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="mailto:mkarthik2000@icloud.com"><i class="fas fa-envelope"></i></a>
-    </div>
-    <div style="margin-top:0.8em">
-      <b>Karthik M</b> · Bengaluru, India<br/>
-      (+91) 9972503858 · mkarthik2000@icloud.com
-      <div style="margin-top:0.7em;opacity:0.7;">&copy; 2025 Karthik M. All Rights Reserved.</div>
+    <div class="timeline-item">
+      <span class="timeline-date">Jun 2022 - Sep 2024</span>
+      <h3>System Engineer</h3>
+      <h4>Infosys Finacle</h4>
+      <ul>
+        <li>Trained in Java Spring Boot, Angular, WaveMaker, Unix</li>
+        <li>Hands-on deployment of robust applications</li>
+      </ul>
     </div>
   </div>
 </div>
+<div id="projects" class="section-card">
+  <h2>Key Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3>RM Workbench <span class="tech-item">20 Months</span></h3>
+      <ul>
+        <li>Angular & Java Fullstack product dev (Finacle)</li>
+        <li>Led team: +20% productivity, –15% delivery time</li>
+      </ul>
+      <div class="tech-stack"><span class="tech-item">Angular</span><span class="tech-item">Java</span><span class="tech-item">Finacle</span></div>
+    </div>
+    <div class="project-card">
+      <h3>ICICI Bank Customization <span class="tech-item">12 Months</span></h3>
+      <ul>
+        <li>Custom RM Workbench for ICICI (Finacle), efficiency +20%</li>
+        <li>User experience boost, fast rollout</li>
+      </ul>
+      <div class="tech-stack"><span class="tech-item">Java Spring Boot</span><span class="tech-item">Angular</span><span class="tech-item">Finacle</span></div>
+    </div>
+    <div class="project-card">
+      <h3>Infy eKart <span class="tech-item">3 Months</span></h3>
+      <ul>
+        <li>Full Stack E-commerce app (Angular, Spring Boot, MySQL)</li>
+        <li>Authentication, product, cart & JWT APIs</li>
+      </ul>
+      <div class="tech-stack"><span class="tech-item">Java</span><span class="tech-item">Angular</span><span class="tech-item">Spring Boot</span><span class="tech-item">MySQL</span></div>
+    </div>
+  </div>
+</div>
+<div id="certifications" class="section-card">
+  <h2>Certifications & Education</h2>
+  <div class="certs">
+    <div class="cert-card">
+      <h3>Infosys Certifications</h3>
+      <ul>
+        <li>Java-Angular Full Stack Development</li>
+        <li>Spring Boot & REST API Development</li>
+        <li>SPA with Angular</li>
+      </ul>
+    </div>
+    <div class="cert-card">
+      <h3>Education</h3>
+      <ul>
+        <li>B.Tech/B.E. Civil Engineering</li>
+        <li>VTU – 2022</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="resume" class="section-card">
+  <h2>Download My Resume</h2>
+  <div class="resume-box">
+    <b>Karthik M - Full Stack Developer</b>
+    <p>ATS-friendly · Specialized in Java Spring Boot · Angular · Digital Banking</p>
+    <a href="resume.pdf" class="cta-btn resumemain" download>Download Resume (PDF)</a>
+  </div>
+</div>
+<div class="footer" id="contact">
+  <div class="social-links">
+    <a href="https://linkedin.com/in/karthik-m-24077b219/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/karthikmuniraju" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="mailto:mkarthik2000@icloud.com"><i class="fas fa-envelope"></i></a>
+  </div>
+  <div style="margin-top:0.6em">
+    <b>Karthik M</b> · Bengaluru, India<br/>
+    (+91) 9972503858 · mkarthik2000@icloud.com
+    <div style="margin-top:0.7em;opacity:0.7;">&copy; 2025 Karthik M. All Rights Reserved.</div>
+  </div>
+</div>
 <script>
-  // Mac-style boot loader bar animation with percentage
+  // Loader: favicon as icon
   window.addEventListener("DOMContentLoaded", () => {
     const loader = document.getElementById("loader");
     const percentElem = document.getElementById("loader-percentage");
-    const bar = document.getElementById("macbar-progress");
     let percent = 0;
-    const duration = Math.floor(4000 + Math.random() * 3000); // 4–7s
-    const interval = duration / 100;
-    let seg = 0;
-    function animateBar() {
-      seg++;
+    const duration = Math.floor(4000 + Math.random() * 3000);
+    const intervalTime = duration / 100;
+    const interval = setInterval(() => {
       percent++;
       percentElem.textContent = percent + "%";
-      bar.style.width = percent + "%";
-      if (percent < 100) {
-        setTimeout(animateBar, interval);
-      } else {
+      if (percent >= 100) {
+        clearInterval(interval);
         loader.classList.add("fade-out");
       }
-    }
-    animateBar();
+    }, intervalTime);
   });
 
-  // Scroll Direction (up/down) for animation
+  // Scroll dir for card-in/out animation
   let lastScrollTop = 0;
   window.addEventListener("scroll", function () {
     let st = window.pageYOffset || document.documentElement.scrollTop;
@@ -437,7 +496,7 @@
     lastScrollTop = st <= 0 ? 0 : st;
   }, false);
 
-  // IntersectionObserver for cards
+  // Intersection Observer for card entrance
   const cards = document.querySelectorAll('.section-card');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
