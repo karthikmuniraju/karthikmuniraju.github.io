@@ -2,535 +2,335 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Karthik M – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karthik M - Portfolio</title>
   <link rel="icon" href="asset/images/A9D54B6C-0FF5-421F-BC1C-9D0726E6529B.PNG" type="image/x-icon" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- ✅ STYLES -->
   <style>
     :root {
-      --purple: #a259f7;
-      --deep: #221040;
-      --purple-light: #27165c;
-      --text-main: #fff;
-      --text-glow: #efe2ff;
-      --text-sub: #bba9fa;
-      --surface: #221930bb;
-      --glass: rgba(28,16,55,0.44);
+      --primary: #a259f7;
       --secondary: #20e3b2;
-      --card-radius: 20px;
-    }
-    html, body { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      min-height: 100vh;
-      background: radial-gradient(ellipse at 50% 0%, #2f1150 0%, #12091e 100%);
-      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-      color: var(--text-main);
-      letter-spacing: 0.01em;
-      overflow-x: hidden;
+      --background: #16161f;
+      --surface: rgba(255, 255, 255, 0.06);
+      --text-light: #ffffffde;
+      --text-muted: #bcbccd;
+      --border: rgba(255, 255, 255, 0.12);
     }
 
-    /* Windows-style Loader */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top left, #1e1a31, #0d0b14);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* ✅ WINDOWS-STYLE LOADER */
     #loader {
       position: fixed;
       inset: 0;
+      background: #0f0e1c;
       z-index: 9999;
-      background: radial-gradient(circle at 60% 35%, #6044ec18 0%, #292353ee 100%);
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      transition: opacity 0.5s;
-    }
-    #loader.fade-out { opacity: 0; pointer-events: none;}
-    .windows-loader {
-      position: relative;
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 1em auto;
-    }
-    .windows-loader .dot {
-      position: absolute;
-      left: 50%; top: 50%;
-      width: 12px; height: 12px;
-      background: var(--purple);
-      border-radius: 50%;
-      transform: rotate(0deg) translate(26px) scale(1);
-      animation: spin-dot 1.2s linear infinite;
-      filter: drop-shadow(0 0 10px var(--purple));
-      opacity: 0.6;
-    }
-    .windows-loader .dot:nth-child(2) { transform: rotate(45deg) translate(26px) scale(1);}
-    .windows-loader .dot:nth-child(3) { transform: rotate(90deg) translate(26px) scale(1);}
-    .windows-loader .dot:nth-child(4) { transform: rotate(135deg) translate(26px) scale(1);}
-    .windows-loader .dot:nth-child(5) { transform: rotate(180deg) translate(26px) scale(1);}
-    .windows-loader .dot:nth-child(6) { transform: rotate(225deg) translate(26px) scale(1);}
-    .windows-loader .dot:nth-child(7) { transform: rotate(270deg) translate(26px) scale(1);}
-    .windows-loader .dot:nth-child(8) { transform: rotate(315deg) translate(26px) scale(1);}
-    .windows-loader .dot { animation-delay: 0s;}
-    .windows-loader .dot:nth-child(2) { animation-delay: 0.15s}
-    .windows-loader .dot:nth-child(3) { animation-delay: 0.3s}
-    .windows-loader .dot:nth-child(4) { animation-delay: 0.45s}
-    .windows-loader .dot:nth-child(5) { animation-delay: 0.60s}
-    .windows-loader .dot:nth-child(6) { animation-delay: 0.75s}
-    .windows-loader .dot:nth-child(7) { animation-delay: 0.90s}
-    .windows-loader .dot:nth-child(8) { animation-delay: 1.05s}
-    @keyframes spin-dot {
-      0%   { opacity:0.5; transform: rotate(var(--angle,0deg)) translate(26px) scale(0.8);}
-      50%  { opacity:1;   transform: rotate(var(--angle,0deg)) translate(26px) scale(1.35);}
-      100% { opacity:0.5; transform: rotate(var(--angle,0deg)) translate(26px) scale(0.8);}
-    }
-    .loader-percentage {
-      font-size:2em;
-      color:var(--purple);
-      font-weight:bold;
-      text-shadow:0 0 18px #b496f9;
-      letter-spacing:2px;
-      margin-bottom:0.5em;
-    }
-    #loader p {
-      color:var(--text-main);
-      opacity:0.75;
-      font-size:1.10em;
-      margin-top:0;
-      letter-spacing:1px;
+      align-items: center;
+      flex-direction: column;
+      transition: opacity 0.6s ease-in-out;
     }
 
-    /* --- GLASS CARD CONTAINER --- */
-    .glass-main {
-      margin:43px auto 34px auto;
-      max-width: 760px;
-      background: linear-gradient(120deg, #331b4d88 5%, #2c133cbb 100%);
-      border-radius: var(--card-radius);
-      box-shadow: 0 8px 80px #a259f761, 0 1.5px 100px #371e603c;
-      padding: 36px 8vw 34px 8vw;
-      backdrop-filter: blur(24px);
-      border: 1.8px solid #a259f729;
-      position:relative;
+    #loader.fade-out {
+      opacity: 0;
+      pointer-events: none;
     }
-    .avatar {
-      display: block;
-      width: 90px;
-      height: 90px;
-      margin: 0 auto 1.3em auto;
-      border-radius: 22px;
-      object-fit: cover;
-      background: #af93f7;
-      box-shadow: 0 4px 24px #a259f763;
-      border: 3.5px solid #a259f799;
+
+    .windows-loader {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1em;
     }
-    .tagline {
-      font-size:1.13em;
-      color:var(--text-sub);
-      text-align:center;
-      font-weight: 600;
-      margin-bottom:0.7em;
-      letter-spacing:.08em;
-      text-transform:uppercase;
+
+    .windows-loader .dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--primary);
+      top: 50%;
+      left: 50%;
+      animation: spin-dot 1.2s linear infinite;
+      transform-origin: center center;
     }
-    .headline {
-      font-size: 1.62em;
-      font-weight: 700;
-      color: var(--text-glow);
-      text-align:center;
-      margin-bottom:0.7em;
-      letter-spacing:0.01em;
-      text-shadow:0 0 17px #c89efa26;
+
+    /* 8 dots around circle */
+    .dot:nth-child(1) { transform: rotate(0deg) translate(24px); animation-delay: 0s; }
+    .dot:nth-child(2) { transform: rotate(45deg) translate(24px); animation-delay: 0.15s; }
+    .dot:nth-child(3) { transform: rotate(90deg) translate(24px); animation-delay: 0.3s; }
+    .dot:nth-child(4) { transform: rotate(135deg) translate(24px); animation-delay: 0.45s; }
+    .dot:nth-child(5) { transform: rotate(180deg) translate(24px); animation-delay: 0.6s; }
+    .dot:nth-child(6) { transform: rotate(225deg) translate(24px); animation-delay: 0.75s; }
+    .dot:nth-child(7) { transform: rotate(270deg) translate(24px); animation-delay: 0.9s; }
+    .dot:nth-child(8) { transform: rotate(315deg) translate(24px); animation-delay: 1.05s; }
+
+    @keyframes spin-dot {
+      0%, 100% { opacity: 0.3; transform: scale(0.8) }
+      50% { opacity: 1; transform: scale(1.4) }
     }
-    .about-pitch {
-      color:var(--text-main);
-      font-size:1.07em;
+
+    .loader-percentage {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ✅ HEADER */
+    header {
       text-align: center;
-      margin-bottom:1.9em;
-      opacity:0.9;
+      padding: 4rem 1rem 2rem;
     }
-    .tab-nav {
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 3px solid var(--primary);
+      object-fit: cover;
+    }
+
+    .title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    /* ✅ CTA BUTTONS */
+    .cta-btns {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 1.2em;
-      margin-bottom:2.3em;
+      gap: 1em;
+      margin: 2rem 0;
     }
-    .tab-nav a {
-      color: var(--purple);
+
+    .cta-btn {
+      padding: 0.75em 2em;
+      font-size: 1rem;
       font-weight: 600;
       text-decoration: none;
-      letter-spacing:1px;
-      padding: 0.45em 1.25em;
-      border-radius:17px;
-      background: #2d12524a;
-      transition: background .17s, color .14s;
-      font-size:1.08em;
-    }
-    .tab-nav a:hover, .tab-nav .active {
-      background: #a259f7cc;
-      color:#fff;
-    }
-    /* --- section blocks --- */
-    section {
-      background: linear-gradient(100deg, #27123a84 60%, #291449b2 100%);
-      border-radius:18px;
-      margin:2.8em 0 2.1em 0;
-      box-shadow:0 5px 42px #0003, 0 0px 0px #0000;
-      padding:2.7em 1.66em 2.44em 1.66em;
-      max-width: 660px; width: 90vw;
-      margin-left:auto;
-      margin-right:auto;
-      color:#ffe6ff;
-      position: relative;
-    }
-    section h2 {
-      margin:0 0 1.17em 0;
-      color:#bba9fa;
-      font-weight:600;
-      font-size:1.41em;
-      letter-spacing: 1px;
-      text-shadow: 0 0 16px #a259f767;
-    }
-    /* About content and contact-info */
-    .about-content {
-      text-align:left;
-      color:#ffe8fd;
-      font-size:1.13em;
-    }
-    .about-content .contact-info p { margin:0.3em 0;}
-    .about-content .contact-info i { color:var(--secondary);}
-    /* Skills grid */
-    .skills-grid {
-      display:grid;
-      gap: 18px;
-      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-    }
-    .skill-card {
-      background: #1d1137bb;
-      border-radius:11px;
-      box-shadow:0 3px 19px #a259f728;
-      padding:1.15em 0.8em;
-      margin-bottom:0.6em;
-      color:#efd7ff;
-    }
-    .skill-card h3 { color:#a259f7; margin-bottom:0.63em;}
-    .skill-card i {color:var(--purple);font-size:1.5em;}
-    .skill-card ul {margin:0; padding-left:17px;}
-    .skill-card li {margin-bottom:0.42em;}
-    /* Timeline */
-    .timeline { border-left:4px solid #a259f7; margin-top:1.2em; padding-left:17px;}
-    .timeline-item { margin-bottom:2.5em;}
-    .timeline-date { color:#a259f7; font-weight: 600;}
-    .timeline-item h3 { margin:0.14em 0 0.17em 0;}
-    .timeline-item h4 { color:var(--text-sub); font-size: 1.09em; margin-bottom:0.33em;}
-    /* Project Grid */
-    .projects-grid {
-      display: grid;
-      gap: 1.3em;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      margin-bottom:1.5em;
-    }
-    .project-card {
-      background: #210d36b7;
-      border-radius:12px;
-      box-shadow:0 2px 18px #a259f726;
-      padding:1.1em 0.9em 1.2em 1.13em;
-      color: #eee3ff;
-    }
-    .project-header {display: flex; justify-content: space-between; align-items: center;}
-    .project-header h3 {color:#a259f7;}
-    .project-duration {color:#a259f799; font-size:0.98em;}
-    .project-body ul {padding-left:16px;}
-    .tech-stack {margin:0.6em 0;}
-    .tech-item {background:#503584bb;color:#a259f7;padding:0.34em 1em;border-radius:14px; margin-right:5px; font-size:0.98em;}
-    /* Certifications & Resume */
-    .certs {display: grid;grid-template-columns:1fr 1fr; gap: 1.1em;}
-    .cert-card { background: #211132d7; border-radius:10px; box-shadow:0 2px 13px #a259f720; padding:1em;}
-    .resume-box { background: #211132d7; border-radius:10px; box-shadow:0 2px 8px #a259f726; padding:1em; text-align:center;}
-    .resume-box h3 { margin:0.4em 0;}
-    .resume-box p {color:#ad93e5;}
-    .resume-box a {margin-top:1.1em;}
-    /* Footer */
-    .footer {
-      width: 100vw;
-      color: #9b91ba;
+      border-radius: 30px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      min-width: 160px;
       text-align: center;
-      margin: 2.2em 0 0 0;
-      padding-bottom: 1.9em;
-      letter-spacing:0.5px;
     }
-    .social-links {display:flex;justify-content:center;gap:22px;}
-    .social-links a { color:#a259f7; font-size:1.48em; }
-    .social-links a:hover {color:#f6ecfa;}
-    @media (max-width:700px){
-      .glass-main, section {max-width:97vw;padding-left:3vw;padding-right:3vw;}
-      .certs {grid-template-columns:1fr;}
-      .projects-grid {grid-template-columns:1fr;}
-      .skills-grid {grid-template-columns:1fr;}
+
+    .cta-btn.resume {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
     }
-    @media (max-width:480px){
-      .glass-main, section {padding-left:1vw;padding-right:1vw;}
+
+    .cta-btn.contact {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 600px) {
+      .cta-btn {
+        width: 90%;
+      }
+
+      .cta-btns {
+        flex-direction: column;
+        gap: 0.75em;
+      }
+    }
+
+    /* ✅ SECTION */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    section h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 0.3rem;
+    }
+
+    section p, li {
+      font-size: 1rem;
+      color: #ddd;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+
+    .card h3 {
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ✅ FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .socials a {
+      color: var(--primary);
+      margin: 0 10px;
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    .socials a:hover {
+      color: var(--secondary);
     }
   </style>
+
 </head>
 <body>
 
-<!-- Loader (Windows-style, percent progress) -->
-<div id="loader">
-  <div class="windows-loader">
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  <!-- ✅ Windows Loader -->
+  <div id="loader">
+    <div class="windows-loader">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+    <div class="loader-percentage" id="loader-percentage">0%</div>
+    <p>Loading Portfolio...</p>
   </div>
-  <div class="loader-percentage" id="loader-percentage">0%</div>
-  <p>Loading Portfolio...</p>
-</div>
 
-<!-- GLASS MAIN CARD -->
-<div class="glass-main">
-  <img src="asset/images/da455923-c0d4-4e81-befd-d7e65c4360ab.jpg" class="avatar" alt="Karthik M" />
-  
-  <div class="tagline">Latest UI — All Components</div>
-  <div class="headline">Judges a book by its <span style="color:var(--purple);font-style:italic;">cover</span>.<br>I'm a Software Engineer.</div>
-  <div class="about-pitch">
-    Currently at Infosys Finacle.<br>
-    Building modern, secure, and scalable digital banking applications.<br>
-    Open-source contributor & passionate about <span style="color:var(--secondary)">UI/UX</span>.
-  </div>
-  <div class="tab-nav">
-    <a href="#about" class="active">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#resume">Resume</a>
-  </div>
-</div>
+  <!-- ✅ Header -->
+  <header>
+    <img src="asset/images/da455923-c0d4-4e81-befd-d7e65c4360ab.jpg" alt="Karthik M" class="avatar" />
+    <h1 class="title">Karthik M</h1>
+    <p class="subtitle">Senior Systems Engineer | Java + Angular Full Stack Developer</p>
+    <div class="cta-btns">
+      <a href="resume.pdf" class="cta-btn resume" download><i class="fas fa-download"></i> Resume</a>
+      <a href="#contact" class="cta-btn contact"><i class="fas fa-envelope"></i> Contact Me</a>
+    </div>
+  </header>
 
-<section id="about">
-  <h2>About Me</h2>
-  <div class="about-content">
-    <b>Profile Summary</b>
-    <p>Experienced Senior Systems Engineer with a proven track record at Infosys in the Banking Domain (Finacle). Proficient in WaveMaker implementation with Java, adept at crafting secure, scalable, and intuitive banking products using HTML, CSS, JavaScript, jQuery and Java for backend.</p>
-    <p>Noteworthy contributions include optimizing web applications, elevating performance, and enriching user engagement within the financial sector. Skilled in collaborating across teams to deliver seamless digital banking solutions while ensuring compliance with industry security standards.</p>
-    <p>Seeking opportunities to expand both frontend and backend expertise, explore modern frameworks, and spearhead innovative banking solutions to propel digital transformation within the finance industry.</p>
-    <div class="contact-info" style="margin-top: 30px;">
-      <p><i class="fas fa-phone"></i> (+91) 9972503858</p>
-      <p><i class="fas fa-envelope"></i> mkarthik2000@icloud.com</p>
-      <p><i class="fas fa-map-marker-alt"></i> Bengaluru, India</p>
-    </div>
-  </div>
-</section>
+  <!-- ✅ About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Experienced Senior Systems Engineer at Infosys, working with Finacle in the banking domain. Specialized in developing secure, scalable and interactive web apps using Angular, Java Spring Boot, and WaveMaker.
+    </p>
+    <p>
+      Key achievements: optimized web applications for performance, contributed to digital transformation in finance, and collaborated closely with cross-functional teams.
+    </p>
+  </section>
 
-<section id="skills">
-  <h2>Technical Skills</h2>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <i class="fab fa-angular"></i>
-      <h3>Frontend</h3>
-      <ul>
-        <li>Angular (TypeScript)</li>
-        <li>HTML5, CSS3</li>
-        <li>JavaScript (ES6+)</li>
-        <li>jQuery</li>
-      </ul>
+  <!-- ✅ Skills -->
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="card-grid">
+      <div class="card"><h3>Frontend</h3><ul><li>Angular (TypeScript)</li><li>HTML5 / CSS3</li><li>JavaScript / jQuery</li></ul></div>
+      <div class="card"><h3>Backend</h3><ul><li>Java, Spring Boot</li><li>JWT, REST APIs</li><li>Microservices</li></ul></div>
+      <div class="card"><h3>DevOps & DB</h3><ul><li>MySQL, JPA</li><li>Jenkins, Git</li><li>Docker, Linux</li></ul></div>
+      <div class="card"><h3>Banking Domain</h3><ul><li>Infosys Finacle</li><li>WaveMaker Implementation</li></ul></div>
     </div>
-    <div class="skill-card">
-      <i class="fas fa-server"></i>
-      <h3>Backend</h3>
-      <ul>
-        <li>Java, Spring Boot</li>
-        <li>Spring Security, JWT</li>
-        <li>RESTful API Development</li>
-        <li>Microservices Architecture</li>
-      </ul>
-    </div>
-    <div class="skill-card">
-      <i class="fas fa-database"></i>
-      <h3>Database & DevOps</h3>
-      <ul>
-        <li>MySQL, Spring Data JPA</li>
-        <li>Jenkins CI/CD, Git</li>
-        <li>Ansible Terraform</li>
-        <li>Docker, Unix/Linux</li>
-        <li>WaveMaker Implementation</li>
-      </ul>
-    </div>
-    <div class="skill-card">
-      <i class="fas fa-building"></i>
-      <h3>Banking Domain</h3>
-      <ul>
-        <li>Infosys Finacle Expertise</li>
-        <li>Banking Product Development</li>
-        <li>Financial Security Standards</li>
-        <li>Digital Banking Solutions</li>
-      </ul>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="experience">
-  <h2>Professional Experience</h2>
-  <div class="timeline">
-    <div class="timeline-item">
-      <span class="timeline-date">Oct 2024 - Present</span>
-      <h3>Senior Systems Engineer</h3>
-      <h4>Infosys Finacle</h4>
-      <ul>
-        <li>Fullstack developer in the Banking Domain specializing in Finacle solutions</li>
-        <li>Develop secure, efficient, and user-friendly web applications for banking sector</li>
-        <li>Deliver high-performance solutions that enhance customer experience</li>
-        <li>Learn and implement latest web technologies to drive innovation</li>
-      </ul>
-    </div>
-    <div class="timeline-item">
-      <span class="timeline-date">Jun 2022 - Sep 2024</span>
-      <h3>System Engineer</h3>
-      <h4>Infosys Finacle</h4>
-      <ul>
-        <li>Completed comprehensive training program in full stack development</li>
-        <li>Gained proficiency in Java Springboot and Angular using TypeScript</li>
-        <li>Specialized in WaveMaker implementation and Unix log extraction</li>
-        <li>Acquired hands-on experience in developing robust applications</li>
-      </ul>
-    </div>
-  </div>
-</section>
+  <!-- ✅ Experience -->
+  <section id="experience">
+    <h2>Experience</h2>
+    <ul>
+      <li><strong>Senior Systems Engineer, Infosys Finacle</strong> (Oct 2024 – Present)</li>
+      <li><strong>System Engineer, Infosys Finacle</strong> (Jun 2022 – Sep 2024)</li>
+    </ul>
+  </section>
 
-<section id="projects">
-  <h2>Key Projects</h2>
-  <div class="projects-grid">
-    <div class="project-card">
-      <div class="project-header">
+  <!-- ✅ Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="card-grid">
+      <div class="card">
         <h3>RM Workbench</h3>
-        <span class="project-duration">20 Months</span>
+        <p>Developed a banking workbench system using Angular and Spring Boot. Led team productivity, improved delivery by 20%.</p>
       </div>
-      <div class="project-body">
-        <p>Product development using Angular & Java Fullstack (Finacle development)</p>
-        <ul>
-          <li>Orchestrated cross-functional team to accomplish project within 18 months, driving 20% productivity surge</li>
-          <li>Introduced agile methodologies, reducing project delivery time by 15%</li>
-          <li>Partnered with stakeholders to delineate project scope and timelines</li>
-        </ul>
-        <div class="tech-stack">
-          <span class="tech-item">Angular</span>
-          <span class="tech-item">Java</span>
-          <span class="tech-item">Finacle</span>
-        </div>
-      </div>
-    </div>
-    <div class="project-card">
-      <div class="project-header">
+      <div class="card">
         <h3>ICICI Bank Customization</h3>
-        <span class="project-duration">12 Months</span>
+        <p>Customized Finacle modules for ICICI bank, increased operational efficiency by 20% with faster rollouts.</p>
       </div>
-      <div class="project-body">
-        <p>Customization of RM Workbench for ICICI Bank (Finacle customization)</p>
-        <ul>
-          <li>Developed customizations resulting in 20% increase in efficiency</li>
-          <li>Led project to complete customization within 6 months</li>
-          <li>Collaborated with ICICI Bank team to enhance user experience</li>
-        </ul>
-        <div class="tech-stack">
-          <span class="tech-item">Java Spring Boot</span>
-          <span class="tech-item">Angular</span>
-          <span class="tech-item">Finacle</span>
-        </div>
-      </div>
-    </div>
-    <div class="project-card">
-      <div class="project-header">
+      <div class="card">
         <h3>Infy eKart</h3>
-        <span class="project-duration">3 Months</span>
-      </div>
-      <div class="project-body">
-        <p>Full Stack E-commerce Web Application (Capstone Project)</p>
-        <ul>
-          <li>Developed using Angular, Spring Boot, and MySQL</li>
-          <li>Implemented user authentication, product listing, cart management</li>
-          <li>Utilized Spring Security and JWT for secure authentication</li>
-        </ul>
-        <div class="tech-stack">
-          <span class="tech-item">Java</span>
-          <span class="tech-item">Angular</span>
-          <span class="tech-item">Spring Boot</span>
-          <span class="tech-item">MySQL</span>
-        </div>
+        <p>Capstone project – Full-stack e-commerce platform with authentication, product catalog, checkout system.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="certifications">
-  <h2>Certifications & Education</h2>
-  <div class="certs">
-    <div class="cert-card">
-      <b>Infosys Certifications</b>
-      <ul>
-        <li>Java-Angular Full Stack Development</li>
-        <li>Development of Service Layer using Java Spring Boot</li>
-        <li>Development of Persistence Layer using Java Spring Data</li>
-        <li>Development of REST API using Java Spring Web</li>
-        <li>Development of Single Page Application using Angular</li>
-      </ul>
+  <!-- ✅ Contact & Footer -->
+  <footer id="contact">
+    <h2>Contact</h2>
+    <p><i class="fas fa-phone"></i> (+91) 9972503858</p>
+    <p><i class="fas fa-envelope"></i> mkarthik2000@icloud.com</p>
+    <p><i class="fas fa-map-marker-alt"></i> Bengaluru, India</p>
+
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/karthik-m-24077b219/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/karthikmuniraju" target="_blank"><i class="fab fa-github"></i></a>
     </div>
-    <div class="cert-card">
-      <b>Education</b>
-      <ul>
-        <li>B.Tech/B.E. in Civil Engineering</li>
-        <li>Visveswaraiah Technological University (VTU)</li>
-        <li>Graduated: 2022</li>
-      </ul>
-    </div>
-  </div>
-</section>
+    <p>&copy; 2025 Karthik M. All Rights Reserved.</p>
+  </footer>
 
-<section id="resume">
-  <h2>Download My Resume</h2>
-  <div class="resume-box">
-    <h3>Karthik M - Full Stack Developer</h3>
-    <p>Professionally optimized resume with ATS-friendly formatting highlighting my experience in banking solutions development using Java Spring Boot and Angular.</p>
-    <a href="resume.pdf" class="tab-nav active" download>Download Resume (PDF)</a>
-  </div>
-</section>
-
-<div class="footer" id="contact">
-  <div class="social-links">
-    <a href="https://linkedin.com/in/karthik-m-24077b219/" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/karthikmuniraju" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="mailto:mkarthik2000@icloud.com"><i class="fas fa-envelope"></i></a>
-  </div>
-  <div style="margin-top:1.1em">
-    <b>Karthik M</b> · Bengaluru, India<br>
-    (+91) 9972503858 · mkarthik2000@icloud.com
-    <div style="margin-top:0.7em;opacity:0.7;">&copy; 2025 Karthik M. All Rights Reserved.</div>
-  </div>
-</div>
-
-<script>
-  // Loader percent animation
-  window.addEventListener("DOMContentLoaded", () => {
-    const loader = document.getElementById("loader");
-    const percentElem = document.getElementById("loader-percentage");
-    let percent = 0;
-    const duration = Math.floor(5000 + Math.random() * 5000); // 5–10s
-    const intervalTime = duration / 100;
-
-    const interval = setInterval(() => {
-      percent++;
-      percentElem.textContent = percent + "%";
-      if (percent >= 100) {
-        clearInterval(interval);
-        loader.classList.add("fade-out");
-        setTimeout(() => loader.style.display = "none", 500);
-      }
-    }, intervalTime);
-  });
-  // Smooth scroll
-  document.querySelectorAll('.tab-nav a').forEach(anchor => {
-    anchor.addEventListener("click", function(e){
-      const href = this.getAttribute("href");
-      if(href && href.startsWith("#") && href.length>1){
-        e.preventDefault();
-        document.querySelector(href).scrollIntoView({behavior:'smooth'});
-        document.querySelectorAll('.tab-nav a').forEach(a => a.classList.remove('active'));
-        this.classList.add('active');
-      }
+  <!-- ✅ Scripts -->
+  <script>
+    // Percent-based loader
+    window.addEventListener("DOMContentLoaded", () => {
+      const loader = document.getElementById("loader");
+      const percentElem = document.getElementById("loader-percentage");
+      let percent = 0;
+      const duration = 5000 + Math.random() * 3000;
+      const interval = setInterval(() => {
+        percent++;
+        percentElem.textContent = percent + "%";
+        if (percent >= 100) {
+          clearInterval(interval);
+          loader.classList.add("fade-out");
+          setTimeout(() => { loader.style.display = "none"; }, 600);
+        }
+      }, duration / 100);
     });
-  });
-</script>
+  </script>
 </body>
 </html>
