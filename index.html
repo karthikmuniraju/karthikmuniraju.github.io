@@ -10,31 +10,39 @@
   <style>
     /* Loader Styles */
     #loader {
-      position: fixed;
-      inset: 0;
-      background-color: #111111;
-      color: #e2e8f0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease;
-    }
-    #loader.fade-out {
-      opacity: 0;
-      pointer-events: none;
-    }
-    .spinner {
-      width: 60px;
-      height: 60px;
-      border: 6px solid rgba(255,255,255,0.1);
-      border-top-color: #8a2be2;
-      border-radius: 50%;
-      animation: spin 1.2s linear infinite;
-      margin-bottom: 1rem;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
+  position: fixed;
+  inset: 0;
+  background-color: #111111;
+  color: #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+#loader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid rgba(255,255,255,0.1);
+  border-top-color: #8a2be2;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+  margin-bottom: 1rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loader-percentage {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #8a2be2;
+  letter-spacing: 1px;
+}
+
   </style>
   <style>
     /* Dark Theme Variables (Default and only theme) */
@@ -357,10 +365,12 @@
 <body>
 
   <!-- Loader -->
-  <div id="loader">
-    <div class="spinner"></div>
-    <p>Loading Portfolio...</p>
-  </div>
+<div id="loader">
+  <div class="spinner"></div>
+  <div class="loader-percentage" id="loader-percentage">0%</div>
+  <p>Loading Portfolio...</p>
+</div>
+
 
   <header>
     <div class="container">
@@ -641,19 +651,45 @@
     </div>
   </footer>
 
-  <script>
-    
-    window.addEventListener("load", () => {
-      const loader = document.getElementById("loader");
-      const delay = Math.floor(5000 + Math.random() * 5000); // 5–10 seconds
-      setTimeout(() => {
+<script>
+  window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
+    const loaderPercentage = document.getElementById("loader-percentage");
+    let percent = 0;
+    const duration = Math.floor(5000 + Math.random() * 5000); // 5–10 sec
+    const intervalTime = duration / 100;
+
+    const interval = setInterval(() => {
+      percent++;
+      loaderPercentage.textContent = percent + "%";
+      if (percent >= 100) {
+        clearInterval(interval);
         loader.classList.add("fade-out");
         setTimeout(() => {
           loader.style.display = "none";
         }, 600);
-      }, delay);
-    });
+      }
+    }, intervalTime);
+  });
 
-    
-    document.querySelectorAll
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute("href")).scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  // Header scroll effect
+  window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 100) {
+      header.style.boxShadow = '0 5px 20px var(--shadow-light)';
+      header.style.background = 'var(--card-background)';
+    } else {
+      header.style.boxShadow = '0 2px 10px var(--shadow-light)';
+      header.style.background = 'var(--card-background)';
+    }
+  });
 </script>
+
