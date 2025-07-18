@@ -27,42 +27,30 @@
       background: var(--bg);
       color: var(--text);
       scroll-behavior: smooth;
-    }
-    body {
       font-size: 18px;
       letter-spacing: 0.01em;
       line-height: 1.7;
     }
-    /* Loader */
     #loader {
       position: fixed; inset: 0;
       background: var(--bg);
       z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
       transition: opacity 0.6s;
     }
     #loader.fade-out {
-      opacity: 0;
-      pointer-events: none;
+      opacity: 0; pointer-events: none;
     }
     .windows-loader {
-      position: relative;
-      width: 60px;
-      height: 60px;
-      margin-bottom: 18px;
+      position: relative; width: 60px; height: 60px; margin-bottom: 18px;
     }
     .windows-loader .dot {
-      position: absolute; 
-      top: 50%; left: 50%;
-      width: 10px; height: 10px;
-      background: var(--primary);
+      position: absolute; top: 50%; left: 50%;
+      width: 10px; height: 10px; background: var(--primary);
       border-radius: 50%;
       transform-origin: 0 0;
-      animation: spin-dot 1.1s linear infinite;
-      opacity: .7;
+      animation: spin-dot 1.1s linear infinite; opacity: .7;
     }
     .windows-loader .dot:nth-child(1) { transform: rotate(0deg) translate(22px); animation-delay: 0s; }
     .windows-loader .dot:nth-child(2) { transform: rotate(45deg) translate(22px); animation-delay: 0.14s;}
@@ -81,8 +69,6 @@
       letter-spacing: .08em; text-shadow: 0 1px 12px #b2b5c955;
     }
     #loader p { color:#f6f7fa; opacity:.75; font-size:1em;}
-
-    /* Navigation */
     .navbar {
       display:flex; justify-content:space-between; max-width:1180px; margin: 1.3em auto 0;
       align-items:center; border-radius:80px; background:rgba(37,34,58,0.7); padding: 0.8em 2.7em;
@@ -108,8 +94,6 @@
       transition: background 0.14s, color 0.13s;
     }
     .navbar a:hover, .navbar a.active { background:var(--primary); color:#fff; }
-
-    /* Hero Card */
     .hero-card {
       max-width: 670px;
       background: linear-gradient(120deg, #232246e8 60%, #28274abc 100%);
@@ -122,6 +106,12 @@
       overflow: hidden;
       border: 1.7px solid #6658f71e;
       transition: box-shadow .22s;
+      opacity: 0;
+      transform: scale(0.97) translateY(45px);
+      animation: fadeInUp .88s cubic-bezier(.38,.67,.19,1.08) .35s forwards;
+    }
+    @keyframes fadeInUp {
+      to {opacity:1;transform:scale(1) translateY(0);}
     }
     .avatar {
       width: 116px; height: 116px;
@@ -167,17 +157,6 @@
       background: var(--secondary); color: #fff;
       border-color: var(--secondary);
     }
-    /* Animate hero on load */
-    .hero-card {
-      opacity: 0;
-      transform: scale(0.97) translateY(45px);
-      animation: fadeInUp .88s cubic-bezier(.38,.67,.19,1.08) .35s forwards;
-    }
-    @keyframes fadeInUp {
-      to {opacity:1;transform:scale(1) translateY(0);}
-    }
-
-    /* Card Sections with Shadow, Glass, Modern Features + Animation */
     .section-card {
       background: var(--surface-glass);
       border-radius: var(--radius);
@@ -188,8 +167,9 @@
       opacity: 0; 
       transform: translateX(-90px) scale(.99);
       transition: box-shadow .19s, opacity 0.74s cubic-bezier(.37,.58,.34,.93), transform 0.74s cubic-bezier(.51,.81,.19,.96);
-      box-sizing:border-box;
       backdrop-filter: blur(11px);
+      box-sizing: border-box;
+      will-change:opacity,transform;
     }
     .section-card.visible {
       opacity: 1;
@@ -204,7 +184,7 @@
       font-family: 'Space Grotesk',Arial,sans-serif;
       font-size:1.32em;
       color:var(--primary);font-weight:900;
-      margin-bottom:1.17em;
+      margin-bottom: 1.17em;
       letter-spacing:.02em;
       border-left: 6px solid var(--accent);
       padding-left: 0.42em;
@@ -212,12 +192,6 @@
       background:linear-gradient(90deg, #181827bb, #292b45cc 99%);
       border-radius:10px;
       display:inline-block;
-    }
-    .section-card ul, .section-card li { 
-      font-size: 1.01em; 
-      color: var(--text-sub);
-      margin-bottom: 0.4em;
-      padding-left: 1.2em;
     }
     .skills-grid, .projects-grid, .certs {
       display: grid; gap: 1.25em;
@@ -252,10 +226,8 @@
     .tech-stack {margin:0.7em 0 .1em 0;}
     .tech-item { 
       background:#6658f719;color:var(--primary);padding:0.3em 0.97em;border-radius:10px;
-      font-size:.98em; font-weight: 600; 
-      margin-right: 0.33em; margin-bottom: 0.25em; display: inline-block;
+      font-size:.98em; font-weight: 600; margin-right: 0.33em; margin-bottom: 0.25em; display: inline-block;
     }
-    /* Timeline/Experience */
     .timeline {
       border-left:4px solid var(--primary);padding-left:19px;margin-top:1em;
     }
@@ -268,13 +240,9 @@
     .timeline-item h3 { margin:0 0 0.22em 0; font-size:1.07em; }
     .timeline-item h4 { color:var(--primary);font-size:.98em;}
     .resume-box {
-      text-align: center;
-      margin-top: 0.7em;
+      text-align: center; margin-top: 0.7em;
     }
-    .resume-box a.cta-btn {
-      margin-top: 1.2em;
-    }
-    /* Footer */
+    .resume-box a.cta-btn { margin-top: 1.2em; }
     .footer { 
       text-align:center; color:#babacd; margin:2.8em 0 1.2em 0;font-size:1.1em;
       padding-bottom:1.38em;
@@ -287,6 +255,8 @@
       .hero-card, .section-card {max-width:99vw;padding-left:3vw;padding-right:3vw;}
       .skills-grid, .projects-grid, .certs {grid-template-columns:1fr;}
     }
+    ul {margin:0;padding-left:1.33em;}
+    li {margin-bottom:0.5em;}
   </style>
 </head>
 <body>
@@ -301,7 +271,7 @@
 </div>
 <!-- Navigation -->
 <div class="navbar">
-  <span class="logo"><i class="fas fa-terminal"></i> Karthik M</span>
+  <span class="logo"><i class="fas fa-star"></i> Karthik M</span>
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -351,7 +321,6 @@
     </div>
   </div>
 </div>
-
 <div id="skills" class="section-card">
   <h2>Technical Skills</h2>
   <div class="skills-grid">
@@ -392,7 +361,6 @@
     </div>
   </div>
 </div>
-
 <div id="experience" class="section-card">
   <h2>Professional Experience</h2>
   <div class="timeline">
@@ -416,7 +384,6 @@
     </div>
   </div>
 </div>
-
 <div id="projects" class="section-card">
   <h2>Key Projects</h2>
   <div class="projects-grid">
@@ -426,7 +393,11 @@
         <li>Angular & Java Fullstack product development (Finacle)</li>
         <li>Team productivity +20%, delivery time –15%</li>
       </ul>
-      <div class="tech-stack"><span class="tech-item">Angular</span> <span class="tech-item">Java</span> <span class="tech-item">Finacle</span></div>
+      <div class="tech-stack">
+        <span class="tech-item">Angular</span>
+        <span class="tech-item">Java</span>
+        <span class="tech-item">Finacle</span>
+      </div>
     </div>
     <div class="project-card">
       <h3>ICICI Bank Customization &nbsp;<span class="tech-item">12 Months</span></h3>
@@ -434,7 +405,11 @@
         <li>Custom RM Workbench for ICICI (Finacle), increased efficiency.</li>
         <li>User experience boost, fast project rollout</li>
       </ul>
-      <div class="tech-stack"><span class="tech-item">Java Spring Boot</span> <span class="tech-item">Angular</span> <span class="tech-item">Finacle</span></div>
+      <div class="tech-stack">
+        <span class="tech-item">Java Spring Boot</span>
+        <span class="tech-item">Angular</span>
+        <span class="tech-item">Finacle</span>
+      </div>
     </div>
     <div class="project-card">
       <h3>Infy eKart &nbsp;<span class="tech-item">3 Months</span></h3>
@@ -442,11 +417,15 @@
         <li>Full Stack E-commerce app (Angular, Spring Boot, MySQL)</li>
         <li>Authentication, product, cart & JWT secure APIs</li>
       </ul>
-      <div class="tech-stack"><span class="tech-item">Java</span> <span class="tech-item">Angular</span> <span class="tech-item">Spring Boot</span> <span class="tech-item">MySQL</span></div>
+      <div class="tech-stack">
+        <span class="tech-item">Java</span>
+        <span class="tech-item">Angular</span>
+        <span class="tech-item">Spring Boot</span>
+        <span class="tech-item">MySQL</span>
+      </div>
     </div>
   </div>
 </div>
-
 <div id="certifications" class="section-card">
   <h2>Certifications & Education</h2>
   <div class="certs">
@@ -467,35 +446,32 @@
     </div>
   </div>
 </div>
-
 <div id="resume" class="section-card">
   <h2>Download My Resume</h2>
   <div class="resume-box">
     <b>Karthik M - Full Stack Developer</b>
-    <p>ATS-friendly. Banking solutions resume<br>Java Spring Boot · Angular · Digital Transformation</p>
+    <p>ATS-friendly, banking solutions resume<br>Java Spring Boot · Angular · Digital Transformation</p>
     <a href="resume.pdf" class="cta-btn" download>Download Resume (PDF)</a>
   </div>
 </div>
-
 <div class="footer" id="contact">
   <div class="social-links">
     <a href="https://linkedin.com/in/karthik-m-24077b219/" target="_blank"><i class="fab fa-linkedin"></i></a>
     <a href="https://github.com/karthikmuniraju" target="_blank"><i class="fab fa-github"></i></a>
     <a href="mailto:mkarthik2000@icloud.com"><i class="fas fa-envelope"></i></a>
   </div>
-  <div style="margin-top:0.6em">
+  <div style="margin-top:0.8em">
     <b>Karthik M</b> · Bengaluru, India<br/>
     (+91) 9972503858 · mkarthik2000@icloud.com
     <div style="margin-top:0.7em;opacity:0.7;">&copy; 2025 Karthik M. All Rights Reserved.</div>
   </div>
 </div>
 <script>
-  // Loader with percent
   window.addEventListener("DOMContentLoaded", () => {
     const loader = document.getElementById("loader");
     const percentElem = document.getElementById("loader-percentage");
     let percent = 0;
-    const duration = Math.floor(4000 + Math.random() * 3000); // 4–7s
+    const duration = Math.floor(4000 + Math.random() * 3000);
     const intervalTime = duration / 100;
     const interval = setInterval(() => {
       percent++;
@@ -507,7 +483,6 @@
     }, intervalTime);
   });
 
-  // Scroll dir for anim
   let lastScrollTop = 0;
   window.addEventListener("scroll", function () {
     let st = window.pageYOffset || document.documentElement.scrollTop;
@@ -515,7 +490,7 @@
     lastScrollTop = st <= 0 ? 0 : st;
   }, false);
 
-  // Intersection Observer for cards
+  // Intersection Observer for Cards
   const cards = document.querySelectorAll('.section-card');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -525,7 +500,7 @@
         entry.target.classList.remove("visible");
       }
     });
-  }, {threshold: 0.18});
+  }, {threshold: 0.17});
   cards.forEach(card => observer.observe(card));
 </script>
 </body>
