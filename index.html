@@ -8,9 +8,9 @@
   <link rel="icon" type="image/png" href="asset/images/A9D54B6C-0FF5-421F-BC1C-9D0726E6529B.PNG"/>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"/>
-  <!-- Material Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-  <!-- Angular Material Theme via CDN -->
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <!-- Angular Material Theme via CDN (for base color style) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@angular/material@15.2.8/prebuilt-themes/deeppurple-amber.css">
   <style>
     html, body {margin:0;padding:0;}
@@ -22,7 +22,7 @@
       letter-spacing: .01em;
       scroll-behavior: smooth;
     }
-    /* =========== NAVBAR =========== */
+    /* NAVBAR */
     .navbar {
       position: sticky;
       top: 0;
@@ -71,8 +71,7 @@
       letter-spacing:0.08em;
     }
     .spacer { flex: 1 1 auto; }
-
-    /* =========== LOADER =========== */
+    /* LOADER */
     #loader {
       position: fixed; inset: 0; z-index: 9999;
       background: #222046 linear-gradient(120deg,#232246 0,#1e1835 100%);
@@ -85,9 +84,57 @@
       pointer-events: none;
     }
     .macbook-loader { /* unchanged loader styles */ }
-    /* ... keep your loader styles as-is ... */
+    .macbook-logo {
+      width: 64px;
+      height: 64px;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 2px 24px #6658f746, 0 0 12px #ececec40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.15em;
+      animation: fadeInLogo 1s cubic-bezier(.44,.81,.36,1.09);
+    }
+    .macbook-logo img, .macbook-logo i {
+      width: 40px;
+      height: 40px;
+      display: block;
+      color: #6658f7;
+      font-size: 2.1em;
+    }
+    @keyframes fadeInLogo {
+      from { opacity: 0; transform: scale(.75);}
+      to { opacity: 1; transform: scale(1);}
+    }
+    .macbook-bar-bg {
+      width: 120px; height: 12px;
+      background: #312e59;
+      border-radius: 6px;
+      box-shadow: 0 2px 12px #1a1834b2;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .macbook-bar-fg {
+      height: 100%;
+      background: linear-gradient(90deg,#fff,#b6c0ec 93%);
+      border-radius: 7px;
+      width: 0;
+      transition: width .30s cubic-bezier(.5,2,.4,1);
+    }
+    .loader-percentage {
+      text-align: center;
+      font-weight: bold;
+      color: #6658f7;
+      font-size: 1.17em;
+      letter-spacing: .1em;
+      margin-bottom: 1.2em;
+      text-shadow: 0 1px 8px #312e54b8;
+    }
+    #loader p { margin-top: 2.5em; color:#cfcbec; letter-spacing: .06em;}
 
-    /* =========== HERO CARD =========== */
+    /* HERO CARD */
     .hero-card {
       max-width: 780px;
       margin: 75px auto 50px auto;
@@ -118,13 +165,14 @@
     .hero-socials {
       margin-top: 1.8em; display:flex; gap:18px; align-items:center;
     }
-    .hero-socials button, .social-links a {
+    .hero-socials a {
       background: #fff2; border-radius: 50%; padding: 0.19em 0.41em; color: #20e3b2;
       box-shadow: 0 1px 9px #20e3b252;
-      font-size:1.55em;
+      font-size:1.45em;
       transition: background .13s, color .18s, transform .15s;
+      display:inline-flex; align-items:center; justify-content: center;
     }
-    .hero-socials button:hover, .social-links a:hover { color: #ff8a00; background: #fff; transform: scale(1.15);}
+    .hero-socials a:hover { color: #ff8a00; background: #fff; transform: scale(1.15);}
     .social-links a {font-size:1.55em;}
     .hero-info {
       flex: 1 1 300px;
@@ -152,7 +200,7 @@
       font-family:'Space Grotesk', Arial, sans-serif;
     }
     .hero-desc {
-      font-size:1.15em; color:var(--muted); margin-bottom:2.4em;
+      font-size:1.15em; color:#b2b5c9; margin-bottom:2.4em;
       text-shadow:0 1px 12px #311e5868;
       font-family: 'Inter', Arial, sans-serif;
     }
@@ -176,10 +224,11 @@
       color: #6658f7!important; border:2px solid #6658f7;
     }
     .cta-btn:active, .cta-btn:focus { box-shadow:0 7px 24px #20e3b2a9;}
+    .cta-btn i {font-size:1.37em;}
     /* section cards */
     .section-card {
       background: rgba(255,255,255,0.12);
-      border-radius: var(--radius); box-shadow:0 4px 30px #6658f748;
+      border-radius: 22px; box-shadow:0 4px 30px #6658f748;
       margin: 2em auto; padding: 2em 1.5em 1.7em 1.5em; max-width:780px;
       border:1.2px solid #322f6542;
     }
@@ -206,6 +255,8 @@
     }
     .footer .social-links {margin-bottom:0.64em;}
     .footer b { font-size:1.09em; }
+    .footer a {color: #fff; transition: color 0.15s;}
+    .footer a:hover {color: #ff8a00;}
     /* animate cards */
     .section-card:not(.visible) {opacity:0;transform:scale(0.98) translateY(30px);}
     .section-card.visible {opacity:1;transform:scale(1) translateY(0);transition: all 0.68s cubic-bezier(.48,.82,.31,.97);}
@@ -255,15 +306,15 @@
   <div class="hero-visual">
     <img src="asset/images/da455923-c0d4-4e81-befd-d7e65c4360ab.jpg" class="hero-avatar" alt="Karthik M">
     <div class="hero-socials">
-      <button onclick="window.open('https://linkedin.com/in/karthik-m-24077b219/')" title="LinkedIn">
-        <span class="material-icons" style="color:#0a66c2;">linkedin</span>
-      </button>
-      <button onclick="window.open('https://github.com/karthikmuniraju')" title="GitHub">
-        <span class="material-icons" style="color:#292929;">code</span>
-      </button>
-      <button onclick="window.location.href='mailto:mkarthik2000@icloud.com'" title="Email">
-        <span class="material-icons" style="color:#20e3b2;">mail</span>
-      </button>
+      <a href="https://linkedin.com/in/karthik-m-24077b219/" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/karthikmuniraju" target="_blank" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:mkarthik2000@icloud.com" title="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
     </div>
   </div>
   <div class="hero-info">
@@ -276,10 +327,10 @@
     </div>
     <div class="cta-btns">
       <a href="resume.pdf" class="cta-btn" download>
-        <span class="material-icons">file_download</span> Resume
+        <i class="fas fa-file-arrow-down"></i> Download Resume
       </a>
       <a href="#contact" class="cta-btn contact">
-        <span class="material-icons">mail</span> Contact Me
+        <i class="fas fa-envelope"></i> Contact Me
       </a>
     </div>
   </div>
@@ -301,7 +352,7 @@
   <span class="mat-card-title">Technical Skills</span>
   <div class="skills-grid">
     <div class="skill-card">
-      <span class="mat-card-title"><span class="material-icons">desktop_windows</span> Frontend</span>
+      <span class="mat-card-title"><i class="fab fa-angular"></i> Frontend</span>
       <ul>
         <li>Angular (TypeScript)</li>
         <li>HTML5, CSS3</li>
@@ -309,7 +360,7 @@
       </ul>
     </div>
     <div class="skill-card">
-      <span class="mat-card-title"><span class="material-icons">dns</span> Backend</span>
+      <span class="mat-card-title"><i class="fas fa-server"></i> Backend</span>
       <ul>
         <li>Java, Spring Boot</li>
         <li>Spring Security, JWT</li>
@@ -317,7 +368,7 @@
       </ul>
     </div>
     <div class="skill-card">
-      <span class="mat-card-title"><span class="material-icons">storage</span> Database &amp; DevOps</span>
+      <span class="mat-card-title"><i class="fas fa-database"></i> Database &amp; DevOps</span>
       <ul>
         <li>MySQL, Spring Data JPA</li>
         <li>Jenkins CI/CD, Git</li>
@@ -326,7 +377,7 @@
       </ul>
     </div>
     <div class="skill-card">
-      <span class="mat-card-title"><span class="material-icons">apartment</span> Banking Domain</span>
+      <span class="mat-card-title"><i class="fas fa-building"></i> Banking Domain</span>
       <ul>
         <li>Infosys Finacle Expertise</li>
         <li>Product Development</li>
@@ -432,7 +483,7 @@
       Professionally optimized resume with ATS-friendly formatting highlighting my experience in banking solutions development using Java Spring Boot and Angular.
     </p>
     <a href="resume.pdf" class="cta-btn" download>
-      <span class="material-icons">file_download</span> Download Resume (PDF)
+      <i class="fas fa-file-arrow-down"></i> Download Resume (PDF)
     </a>
   </div>
 </div>
@@ -441,13 +492,13 @@
 <div class="footer" id="contact">
   <div class="social-links">
     <a href="https://linkedin.com/in/karthik-m-24077b219/" target="_blank" title="LinkedIn">
-      <span class="material-icons" style="color:#fff;">linkedin</span>
+      <i class="fab fa-linkedin"></i>
     </a>
     <a href="https://github.com/karthikmuniraju" target="_blank" title="GitHub">
-      <span class="material-icons" style="color:#fff;">code</span>
+      <i class="fab fa-github"></i>
     </a>
     <a href="mailto:mkarthik2000@icloud.com" title="Email">
-      <span class="material-icons" style="color:#fff;">mail</span>
+      <i class="fas fa-envelope"></i>
     </a>
   </div>
   <div style="margin-top:0.48em">
@@ -457,7 +508,7 @@
   </div>
 </div>
 
-<!-- Keep scripts SAME as before -->
+<!-- Scripts (unchanged) -->
 <script>
   // MacBook Loader
   window.addEventListener("DOMContentLoaded", () => {
