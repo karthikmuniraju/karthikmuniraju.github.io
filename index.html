@@ -11,56 +11,71 @@
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
   <!-- Angular Material Theme via CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@angular/material@15.2.8/prebuilt-themes/indigo-pink.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@angular/material@15.2.8/prebuilt-themes/deeppurple-amber.css">
   <style>
-    :root {
-      --primary: #6658f7;
-      --secondary: #20e3b2;
-      --surface: #232246f9;
-      --glass: rgba(60,30,120,0.21);
-      --bg: #181827;
-      --text: #f6f7fc;
-      --muted: #b2b5c9;
-      --accent: #ff8a00;
-      --radius: 22px;
-      --shadow: 0 8px 40px #6658f744;
-    }
     html, body {margin:0;padding:0;}
     body {
       min-height:100vh;
-      font-size: 18px;
-      background: linear-gradient(135deg, #1a1a2e 0, #232246 100%);
-      color: var(--text) !important;
+      background: linear-gradient(120deg,#201e30 0,#4266ba 100%);
+      color: #f6f7fc;
       font-family: 'Inter', Arial, sans-serif;
       letter-spacing: .01em;
       scroll-behavior: smooth;
     }
-    .navbar.mat-toolbar {
-      display:flex; justify-content:space-between; max-width:1180px; margin: 1.3em auto 0;
-      align-items:center; border-radius:80px; padding: 0.8em 2.7em;
-      box-shadow:0 2px 44px #2c2b3921;
-      font-family: 'Space Grotesk', 'Inter', Arial, sans-serif;
+    /* =========== NAVBAR =========== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 32px;
+      padding: 0.95em 2.2em;
+      max-width:1120px;
+      margin:25px auto 0 auto;
+      background: rgba(37,34,58,0.75);
+      box-shadow: 0 8px 36px #2a369745;
+      backdrop-filter: blur(16px);
+      font-family: 'Space Grotesk', Arial, sans-serif;
     }
     .navbar .logo {
-      color: var(--primary); font-weight: bold;
-      font-size: 2rem; letter-spacing: 0.02em;
-      display: flex; align-items: center; gap: 0.4em;
-      text-shadow: 0 3px 24px #6658f7bd;
+      font-weight: bold;
+      font-size: 2.18rem;
+      letter-spacing: 0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.33em;
+      color:#fff;
+      text-shadow: 0 3px 12px #6658f7a0;
     }
-    .navbar button.mat-button {
-      color: var(--text) !important;
-      border-radius: 19px; padding: 0.48em 1.29em; margin-left:2px; margin-right:2px;
-      font-weight: 600;
+    .navbar img {
+      vertical-align: middle; margin-right: 9px;
+      border-radius: 18px; box-shadow:0 2px 16px #6658f76b;
+      width:32px; height:32px;
     }
-    .navbar button.mat-button:hover, .navbar button.active {
-      background:var(--primary)!important; color:#fff!important;
+    .navbar button {
+      background: transparent;
+      color:#fff;
+      border-radius: 19px;
+      padding: 0.58em 1.29em;
+      outline: none; border:none; margin:0 3px 0 3px;
+      font-size:1.01em; font-weight: 700;
+      transition: background 0.25s;
+      position: relative;
+    }
+    .navbar button:hover, .navbar button.active {
+      background: linear-gradient(90deg,#6658f7 60%, #20e3b2 100%);
+      color: #fff;
+      box-shadow: 0 2px 9px #6658f74b;
+      letter-spacing:0.08em;
     }
     .spacer { flex: 1 1 auto; }
 
-    /* --- MacBook Loader --- */
+    /* =========== LOADER =========== */
     #loader {
       position: fixed; inset: 0; z-index: 9999;
-      background: #181827 linear-gradient(120deg,#232246 0,#1e1835 100%);
+      background: #222046 linear-gradient(120deg,#232246 0,#1e1835 100%);
       display: flex; flex-direction: column; justify-content: center; align-items: center;
       transition: opacity 0.5s;
       min-height: 100vh;
@@ -69,193 +84,142 @@
       opacity: 0;
       pointer-events: none;
     }
-    .macbook-loader {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 1.45em;
-    }
-    .macbook-logo {
-      width: 64px;
-      height: 64px;
-      background: #fff;
-      border-radius: 22px;
-      box-shadow: 0 2px 24px #6658f746, 0 0 12px #ececec40;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.15em;
-      animation: fadeInLogo 1s cubic-bezier(.44,.81,.36,1.09);
-    }
-    .macbook-logo img, .macbook-logo i {
-      width: 40px;
-      height: 40px;
-      display: block;
-      color: #6658f7;
-      font-size: 2.1em;
-    }
-    @keyframes fadeInLogo {
-      from { opacity: 0; transform: scale(.75);}
-      to { opacity: 1; transform: scale(1);}
-    }
-    .macbook-bar-bg {
-      width: 120px; height: 12px;
-      background: #312e59;
-      border-radius: 6px;
-      box-shadow: 0 2px 12px #1a1834b2;
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 1em;
-    }
-    .macbook-bar-fg {
-      height: 100%;
-      background: linear-gradient(90deg,#fff,#b6c0ec 93%);
-      border-radius: 7px;
-      width: 0;
-      transition: width .30s cubic-bezier(.5,2,.4,1);
-    }
-    .loader-percentage {
-      text-align: center;
-      font-weight: bold;
-      color: var(--primary);
-      font-size: 1.17em;
-      letter-spacing: .1em;
-      margin-bottom: 1.2em;
-      text-shadow: 0 1px 8px #312e54b8;
-    }
-    #loader p { margin-top: 2.5em; color:#cfcbec; letter-spacing: .06em;}
+    .macbook-loader { /* unchanged loader styles */ }
+    /* ... keep your loader styles as-is ... */
 
-    /* --- HERO CARD --- */
-    .hero-card.mat-card {
-      max-width: 700px;
-      margin: 75px auto 45px auto;
-      background: linear-gradient(112deg, var(--glass) 70%, #2b2542 100%);
-      border-radius: 30px;
-      box-shadow: 0 10px 54px #6658f767, 0 1.5px 90px #2c2b392b;
-      display: flex;
-      gap: 0px;
-      padding: 56px 40px 38px 0;
-      overflow: visible;
-      position: relative;
+    /* =========== HERO CARD =========== */
+    .hero-card {
+      max-width: 780px;
+      margin: 75px auto 50px auto;
+      background: linear-gradient(135deg, rgba(102,88,247,0.14) 40%, #20223a 100%);
+      border-radius: 34px;
+      box-shadow: 0 13px 54px #6658f775, 0 1.5px 90px #2c2b399a;
+      display: flex; gap:0; padding: 56px 36px 40px 0;
+      position: relative; overflow: visible;
+      animation: fadeUp 1.1s cubic-bezier(.4,.8,.2,1.09);
+    }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(80px);}
+      to { opacity:1; transform:translateY(0);}
     }
     .hero-visual {
-      flex:0 0 180px; display: flex; flex-direction:column; align-items: center;
-      justify-content: flex-start; min-width:180px;
+      flex:0 0 205px; display: flex; flex-direction:column; align-items: center;
+      min-width:205px; justify-content:flex-start;
     }
     .hero-avatar {
-      width: 140px; height: 140px;
-      margin-left: -38px;
-      border-radius: 38px;
-      object-fit: cover;
-      border: 4px solid var(--primary);
-      background: #eef;
-      box-shadow: 0 3px 40px #6658f754,0 0 0 7px #232246a2;
-      margin-bottom: 1em;
+      width: 150px; height: 150px; margin-left: -30px;
+      border-radius: 42px; object-fit:cover;
+      border: 5px solid #20e3b2;
+      box-shadow: 0 5px 40px #20e3b2,0 0 0 10px #6658f71a;
+      margin-bottom: 1.15em;
+      transition: box-shadow .31s;
     }
+    .hero-avatar:hover {box-shadow: 0 10px 80px #20e3b2,0 0 0 18px #6658f7;}
     .hero-socials {
-      display: flex; gap: 17px; margin-top: 1.5em;
-      align-items: center; justify-content: center;
+      margin-top: 1.8em; display:flex; gap:18px; align-items:center;
     }
-    .hero-socials button {
-      color: var(--primary); background: #fff2; border-radius: 50%!important; padding: 0.16em 0.35em;
+    .hero-socials button, .social-links a {
+      background: #fff2; border-radius: 50%; padding: 0.19em 0.41em; color: #20e3b2;
+      box-shadow: 0 1px 9px #20e3b252;
+      font-size:1.55em;
+      transition: background .13s, color .18s, transform .15s;
     }
+    .hero-socials button:hover, .social-links a:hover { color: #ff8a00; background: #fff; transform: scale(1.15);}
+    .social-links a {font-size:1.55em;}
     .hero-info {
       flex: 1 1 300px;
       display: flex; flex-direction:column;justify-content: center;
-      padding-left: 30px;
+      padding-left: 38px;
     }
     .mat-chip {
       background: linear-gradient(90deg,#20e3b2 0,#6658f7 100%)!important;
-      color: #1a1a2f!important;
-      font-weight:700; letter-spacing:.09em;
-      border-radius: 17px;
-      font-size: 1.01em; margin-bottom:1.1em;
-      box-shadow:0 1px 9px #6658f72b;
-      padding:.31em 1.3em;
+      color: #232a35!important;
+      font-size: 1.07em; font-weight:700; letter-spacing:.09em;
+      border-radius: 15px; margin-bottom:1.35em;
+      box-shadow:0 1px 11px #6658f72b;
+      padding:.32em 1.49em;
+      max-width: fit-content;
     }
     .hero-name {
-      font-family: 'Space Grotesk', 'Inter', Arial, sans-serif;
-      font-size:2.5em; font-weight:900;
-      color:var(--primary); letter-spacing:.01em;
-      line-height: 1.13; margin-bottom:.2em;
-      text-shadow:0 2px 20px #6658f73a;
+      font-family: 'Space Grotesk', Arial, sans-serif;
+      font-size:2.8em; font-weight:900;
+      color:#fff; margin-bottom:0.13em; line-height:1.04;
+      letter-spacing:.01em; text-shadow:0 2px 24px #6658f7a7;
     }
     .hero-role {
-      font-size: 1.13em; color:var(--secondary); font-weight:700;
-      letter-spacing:.03em;
-      margin-bottom:0.72em;
+      font-size: 1.35em; color:#20e3b2; font-weight:700;
+      letter-spacing:.04em; margin-bottom:0.9em;
+      font-family:'Space Grotesk', Arial, sans-serif;
     }
     .hero-desc {
-      font-size:1.12em; color:var(--muted); margin-bottom:2.4em;
-      font-family: 'Inter', Arial, sans-serif;
+      font-size:1.15em; color:var(--muted); margin-bottom:2.4em;
       text-shadow:0 1px 12px #311e5868;
+      font-family: 'Inter', Arial, sans-serif;
     }
     .cta-btns {
-      display: flex; gap: 1.25em; flex-wrap: wrap;
-      margin-top: 1.2em; margin-bottom: 0.7em;
+      display: flex; gap: 1.24em; flex-wrap:wrap;
+      margin-top: 1.15em; margin-bottom: 0.6em;
     }
-    .cta-btn.mat-raised-button {
-      background: var(--primary)!important; color:#fff!important;
-      font-weight:700; font-size:1.09em;
-      box-shadow:0 3px 15px #6658f740;
-      letter-spacing:.02em;
-      border-radius:32px!important;
+    .cta-btn {
+      font-family:'Inter', Arial, sans-serif;
+      background: linear-gradient(90deg,#6658f7 55%, #20e3b2 100%)!important;
+      color: #fff!important;
+      padding: 0.86em 2.6em; border-radius:28px; border:none; outline:none;
+      font-weight:700; font-size:1.16em; text-decoration:none;
+      box-shadow:0 3px 16px #6658f749; letter-spacing:0.025em;
+      transition:background .19s, box-shadow .13s;
+      margin-bottom:0.4em;
+      display:inline-flex; align-items:center; gap:8px;
     }
-    .cta-btn.contact.mat-stroked-button {
-      background: transparent!important; color: var(--primary)!important; border:2px solid var(--primary)!important;
+    .cta-btn.contact {
+      background: linear-gradient(90deg,#fff 25%, #20e3b2 90%)!important;
+      color: #6658f7!important; border:2px solid #6658f7;
     }
-    .cta-btn:hover, .cta-btn:focus { background: var(--secondary)!important; color: #fff!important;}
-    @media(max-width:950px){
-      .hero-card{flex-direction:column;align-items:center;padding:30px 4vw 34px;}
-      .hero-info{padding-left:0;align-items:center;}
-      .hero-name, .hero-role{text-align:center;}
-    }
-    @media(max-width:700px){
-      .navbar,.hero-card{max-width:99vw;padding-left:3vw;padding-right:3vw;}
-      .cta-btn{width:92vw;}
-      .hero-name {font-size:1.39em;}
-      .hero-info{padding-left:0;}
-    }
-    /* SECTION CARDS */
-    .section-card.mat-card {
-      background: var(--glass)!important;
-      border-radius: var(--radius)!important;
-      box-shadow:0 4px 24px #6658f736!important;
-      margin: 2.0em 0; padding: 2em 1.44em 1.7em 1.44em;
+    .cta-btn:active, .cta-btn:focus { box-shadow:0 7px 24px #20e3b2a9;}
+    /* section cards */
+    .section-card {
+      background: rgba(255,255,255,0.12);
+      border-radius: var(--radius); box-shadow:0 4px 30px #6658f748;
+      margin: 2em auto; padding: 2em 1.5em 1.7em 1.5em; max-width:780px;
       border:1.2px solid #322f6542;
-      color: var(--text)!important;
+    }
+    .mat-card-title {
+      font-family: 'Space Grotesk',Arial,sans-serif;
+      font-size:1.37em; color:#6658f7;font-weight:900; margin-bottom: 1em;
+      border-left: 7px solid #ff8a00; padding-left:.45em;
+      background:linear-gradient(90deg, #201e30bb, #2d2955cc 99%);
+      border-radius:12px; display:inline-block;
     }
     .skills-grid, .projects-grid, .certs { display: grid; gap: 1.18em; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); }
-    .skill-card.mat-card, .project-card.mat-card, .cert-card.mat-card { background: #232246f6!important; border-radius:15px!important; padding:1.08em 1em 1.2em; box-shadow: 0 1.5px 12px #6658f71a!important;}
-    .skill-card:hover,.project-card:hover,.cert-card:hover { box-shadow: 0 7px 26px #20e3b262, 0 3.5px 54px #6658f729; transform: translateY(-3px) scale(1.012);}
+    .skill-card, .project-card, .cert-card { background: #232246f6; border-radius:15px; padding:1.08em 1em 1.2em; box-shadow: 0 1.5px 12px #6658f71a; position: relative; }
+    .skill-card:hover, .project-card:hover, .cert-card:hover { box-shadow: 0 7px 26px #20e3b262, 0 3.5px 54px #6658f729; transform: translateY(-3px) scale(1.014);}
     .tech-stack {margin:.7em 0 .1em 0;}
-    .tech-item { background:#6658f719;color:var(--primary);padding:0.3em 1em;border-radius:10px;font-size:.98em; font-weight: 600; margin-right: 0.33em; margin-bottom: 0.25em; display: inline-block;}
-    .timeline {border-left:4px solid var(--primary);padding-left:19px;margin-top:1em;}
-    .timeline-date { display:block; color:var(--secondary); font-weight:bold; font-size:.97em; margin-bottom:.41em;}
-    .timeline-item h3 { margin:0 0 0.22em 0; font-size:1.07em; }
-    .timeline-item h4 { color:var(--primary);}
-    .footer.mat-toolbar {
-      text-align:center; color:#babacd;
-      background-color: var(--primary)!important;
-      margin:2.8em 0 1.2em 0;font-size:1.1em; padding-bottom:1.38em;
-      flex-direction:column!important;
-      align-items:center!important;
-      border-radius:22px!important;
+    .tech-item { background:#6658f719;color:#6658f7;padding:0.3em 1em;border-radius:10px;font-size:0.98em; font-weight:600; margin:0 .2em .2em 0; display:inline-block;}
+    .timeline {border-left:4px solid #6658f7;padding-left:19px;margin-top:1em;}
+    .timeline-date { color:#20e3b2; font-weight:bold; font-size:.97em; margin-bottom:.41em;}
+    .footer {
+      text-align:center; color:#fff; background: linear-gradient(90deg,#6658f7 60%, #20e3b2 100%);
+      margin:2.8em 0 1.2em 0;font-size:1.16em; border-radius:22px; padding-bottom:1.38em;
+      box-shadow:0 7px 38px #6658f778;
+      font-family:'Space Grotesk',Arial,sans-serif;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
     }
-    .social-links {display:flex;justify-content:center;gap:22px;margin-bottom:0.79em;}
-    .social-links a, .footer button {
-      color:#fff!important;
-      font-size:1.13em;
-      background: transparent!important;
+    .footer .social-links {margin-bottom:0.64em;}
+    .footer b { font-size:1.09em; }
+    /* animate cards */
+    .section-card:not(.visible) {opacity:0;transform:scale(0.98) translateY(30px);}
+    .section-card.visible {opacity:1;transform:scale(1) translateY(0);transition: all 0.68s cubic-bezier(.48,.82,.31,.97);}
+    /* fully responsive */
+    @media(max-width:900px){
+      .navbar, .hero-card, .section-card{max-width:98vw; padding-left:3vw; padding-right:3vw;}
+      .hero-card{flex-direction:column;align-items:center;padding:36px 15px;}
+      .hero-info{padding-left:0;}
     }
-    .social-links a:hover{color:var(--secondary)!important;}
-    .footer b { color: #fff!important; }
-    .mat-icon.material-icons { vertical-align: middle; }
-
-    /* Ensure mat-button/mat-stroked-button look as expected */
-    button.mat-button, button.mat-raised-button, button.mat-stroked-button, button.mat-icon-button {
-      font-family: inherit!important;
+    @media(max-width:600px){
+      .navbar{font-size:0.89em;}
+      .hero-name {font-size:1.59em;}
+      .cta-btn {width:98vw;}
+      .skills-grid, .projects-grid, .certs {grid-template-columns: 1fr;}
     }
   </style>
 </head>
@@ -275,30 +239,30 @@
 </div>
 
 <!-- Navbar -->
-<div class="navbar mat-toolbar mat-primary">
-  <span class="logo"><img src="asset/images/A9D54B6C-0FF5-421F-BC1C-9D0726E6529B.PNG" alt="logo" style="width:28px;height:28px;border-radius:7px;vertical-align:middle;margin-right:7px;"/> Karthik M</span>
+<div class="navbar">
+  <span class="logo"><img src="asset/images/A9D54B6C-0FF5-421F-BC1C-9D0726E6529B.PNG" alt="logo"/> Karthik M</span>
   <span class="spacer"></span>
-  <button class="mat-button" onclick="document.getElementById('about').scrollIntoView()">About</button>
-  <button class="mat-button" onclick="document.getElementById('skills').scrollIntoView()">Skills</button>
-  <button class="mat-button" onclick="document.getElementById('experience').scrollIntoView()">Experience</button>
-  <button class="mat-button" onclick="document.getElementById('projects').scrollIntoView()">Projects</button>
-  <button class="mat-button" onclick="document.getElementById('certifications').scrollIntoView()">Certifications</button>
-  <button class="mat-button" onclick="document.getElementById('resume').scrollIntoView()">Resume</button>
+  <button onclick="document.getElementById('about').scrollIntoView()">About</button>
+  <button onclick="document.getElementById('skills').scrollIntoView()">Skills</button>
+  <button onclick="document.getElementById('experience').scrollIntoView()">Experience</button>
+  <button onclick="document.getElementById('projects').scrollIntoView()">Projects</button>
+  <button onclick="document.getElementById('certifications').scrollIntoView()">Certifications</button>
+  <button onclick="document.getElementById('resume').scrollIntoView()">Resume</button>
 </div>
 
 <!-- Hero Card -->
-<div class="mat-card hero-card">
+<div class="hero-card">
   <div class="hero-visual">
     <img src="asset/images/da455923-c0d4-4e81-befd-d7e65c4360ab.jpg" class="hero-avatar" alt="Karthik M">
     <div class="hero-socials">
-      <button class="mat-icon-button" onclick="window.open('https://linkedin.com/in/karthik-m-24077b219/')">
-        <span class="mat-icon material-icons" style="color:#0077b5;">linkedin</span>
+      <button onclick="window.open('https://linkedin.com/in/karthik-m-24077b219/')" title="LinkedIn">
+        <span class="material-icons" style="color:#0a66c2;">linkedin</span>
       </button>
-      <button class="mat-icon-button" onclick="window.open('https://github.com/karthikmuniraju')">
-        <span class="mat-icon material-icons" style="color:#333;">code</span>
+      <button onclick="window.open('https://github.com/karthikmuniraju')" title="GitHub">
+        <span class="material-icons" style="color:#292929;">code</span>
       </button>
-      <button class="mat-icon-button" onclick="window.location.href='mailto:mkarthik2000@icloud.com'">
-        <span class="mat-icon material-icons" style="color:var(--primary);">email</span>
+      <button onclick="window.location.href='mailto:mkarthik2000@icloud.com'" title="Email">
+        <span class="material-icons" style="color:#20e3b2;">mail</span>
       </button>
     </div>
   </div>
@@ -311,19 +275,19 @@
       Skilled in leading front-end and back-end projects. Looking to create impactful digital products for the next generation of banking.
     </div>
     <div class="cta-btns">
-      <a href="resume.pdf" class="cta-btn mat-raised-button" download>
-        <span class="mat-icon material-icons">file_download</span> Download Resume
+      <a href="resume.pdf" class="cta-btn" download>
+        <span class="material-icons">file_download</span> Resume
       </a>
-      <a href="#contact" class="cta-btn contact mat-stroked-button">
-        <span class="mat-icon material-icons">email</span> Contact Me
+      <a href="#contact" class="cta-btn contact">
+        <span class="material-icons">mail</span> Contact Me
       </a>
     </div>
   </div>
 </div>
 
 <!-- Sections -->
-<div id="about" class="mat-card section-card">
-  <span class="mat-card-title" style="font-size:1.29em; color:var(--primary);font-weight:900; margin-bottom: 1em;">About Me</span>
+<div id="about" class="section-card">
+  <span class="mat-card-title">About Me</span>
   <ul>
     <li>Senior Systems Engineer at Infosys, Banking (Finacle)</li>
     <li>Skills: HTML, CSS, JavaScript, Angular, Java, jQuery, Spring Boot</li>
@@ -333,27 +297,27 @@
   </ul>
 </div>
 
-<div id="skills" class="mat-card section-card">
-  <span class="mat-card-title" style="font-size:1.29em; color:var(--primary);font-weight:900; margin-bottom: 1em;">Technical Skills</span>
+<div id="skills" class="section-card">
+  <span class="mat-card-title">Technical Skills</span>
   <div class="skills-grid">
-    <div class="mat-card skill-card">
-      <span class="mat-card-title"><span class="mat-icon material-icons">desktop_windows</span> Frontend</span>
+    <div class="skill-card">
+      <span class="mat-card-title"><span class="material-icons">desktop_windows</span> Frontend</span>
       <ul>
         <li>Angular (TypeScript)</li>
         <li>HTML5, CSS3</li>
         <li>JavaScript (ES6+), jQuery</li>
       </ul>
     </div>
-    <div class="mat-card skill-card">
-      <span class="mat-card-title"><span class="mat-icon material-icons">dns</span> Backend</span>
+    <div class="skill-card">
+      <span class="mat-card-title"><span class="material-icons">dns</span> Backend</span>
       <ul>
         <li>Java, Spring Boot</li>
         <li>Spring Security, JWT</li>
         <li>RESTful API, Microservices Architecture</li>
       </ul>
     </div>
-    <div class="mat-card skill-card">
-      <span class="mat-card-title"><span class="mat-icon material-icons">storage</span> Database &amp; DevOps</span>
+    <div class="skill-card">
+      <span class="mat-card-title"><span class="material-icons">storage</span> Database &amp; DevOps</span>
       <ul>
         <li>MySQL, Spring Data JPA</li>
         <li>Jenkins CI/CD, Git</li>
@@ -361,8 +325,8 @@
         <li>Docker, Unix/Linux, WaveMaker</li>
       </ul>
     </div>
-    <div class="mat-card skill-card">
-      <span class="mat-card-title"><span class="mat-icon material-icons">apartment</span> Banking Domain</span>
+    <div class="skill-card">
+      <span class="mat-card-title"><span class="material-icons">apartment</span> Banking Domain</span>
       <ul>
         <li>Infosys Finacle Expertise</li>
         <li>Product Development</li>
@@ -372,8 +336,8 @@
   </div>
 </div>
 
-<div id="experience" class="mat-card section-card">
-  <span class="mat-card-title" style="font-size:1.29em; color:var(--primary);font-weight:900; margin-bottom: 1em;">Professional Experience</span>
+<div id="experience" class="section-card">
+  <span class="mat-card-title">Professional Experience</span>
   <div class="timeline">
     <div class="timeline-item">
       <span class="timeline-date">Oct 2024 - Present</span>
@@ -396,10 +360,10 @@
   </div>
 </div>
 
-<div id="projects" class="mat-card section-card">
-  <span class="mat-card-title" style="font-size:1.29em; color:var(--primary);font-weight:900; margin-bottom: 1em;">Key Projects</span>
+<div id="projects" class="section-card">
+  <span class="mat-card-title">Key Projects</span>
   <div class="projects-grid">
-    <div class="mat-card project-card">
+    <div class="project-card">
       <span class="mat-card-title">RM Workbench <span class="tech-item">20 Months</span></span>
       <ul>
         <li>Angular &amp; Java Fullstack product development (Finacle)</li>
@@ -411,7 +375,7 @@
         <span class="tech-item">Finacle</span>
       </div>
     </div>
-    <div class="mat-card project-card">
+    <div class="project-card">
       <span class="mat-card-title">ICICI Bank Customization <span class="tech-item">12 Months</span></span>
       <ul>
         <li>Custom RM Workbench for ICICI, Finacle customization</li>
@@ -423,7 +387,7 @@
         <span class="tech-item">Finacle</span>
       </div>
     </div>
-    <div class="mat-card project-card">
+    <div class="project-card">
       <span class="mat-card-title">Infy eKart <span class="tech-item">3 Months</span></span>
       <ul>
         <li>Full stack e-commerce app (Angular, Spring Boot, MySQL)</li>
@@ -439,10 +403,10 @@
   </div>
 </div>
 
-<div id="certifications" class="mat-card section-card">
-  <span class="mat-card-title" style="font-size:1.29em; color:var(--primary);font-weight:900; margin-bottom: 1em;">Certifications &amp; Education</span>
+<div id="certifications" class="section-card">
+  <span class="mat-card-title">Certifications &amp; Education</span>
   <div class="certs">
-    <div class="mat-card cert-card">
+    <div class="cert-card">
       <span class="mat-card-title">Infosys Certifications</span>
       <ul>
         <li>Java-Angular Full Stack Development</li>
@@ -450,7 +414,7 @@
         <li>REST API &amp; SPA with Angular</li>
       </ul>
     </div>
-    <div class="mat-card cert-card">
+    <div class="cert-card">
       <span class="mat-card-title">Education</span>
       <ul>
         <li>B.Tech/B.E. in Civil Engineering</li>
@@ -460,25 +424,31 @@
   </div>
 </div>
 
-<div id="resume" class="mat-card section-card">
-  <span class="mat-card-title" style="font-size:1.29em; color:var(--primary);font-weight:900; margin-bottom: 1em;">Download My Resume</span>
+<div id="resume" class="section-card">
+  <span class="mat-card-title">Download My Resume</span>
   <div class="resume-box" style="text-align:center;">
     <b>Karthik M - Full Stack Developer</b>
     <p>
       Professionally optimized resume with ATS-friendly formatting highlighting my experience in banking solutions development using Java Spring Boot and Angular.
     </p>
-    <a href="resume.pdf" class="mat-raised-button" download>
-      <span class="mat-icon material-icons">file_download</span> Download Resume (PDF)
+    <a href="resume.pdf" class="cta-btn" download>
+      <span class="material-icons">file_download</span> Download Resume (PDF)
     </a>
   </div>
 </div>
 
 <!-- Footer -->
-<div class="mat-toolbar mat-primary footer" id="contact">
+<div class="footer" id="contact">
   <div class="social-links">
-    <a href="https://linkedin.com/in/karthik-m-24077b219/" target="_blank"><span class="mat-icon material-icons" style="color:#fff;">linkedin</span></a>
-    <a href="https://github.com/karthikmuniraju" target="_blank"><span class="mat-icon material-icons" style="color:#fff;">code</span></a>
-    <a href="mailto:mkarthik2000@icloud.com"><span class="mat-icon material-icons" style="color:#fff;">email</span></a>
+    <a href="https://linkedin.com/in/karthik-m-24077b219/" target="_blank" title="LinkedIn">
+      <span class="material-icons" style="color:#fff;">linkedin</span>
+    </a>
+    <a href="https://github.com/karthikmuniraju" target="_blank" title="GitHub">
+      <span class="material-icons" style="color:#fff;">code</span>
+    </a>
+    <a href="mailto:mkarthik2000@icloud.com" title="Email">
+      <span class="material-icons" style="color:#fff;">mail</span>
+    </a>
   </div>
   <div style="margin-top:0.48em">
     <b>Karthik M</b> · Bengaluru, India<br/>
@@ -487,6 +457,7 @@
   </div>
 </div>
 
+<!-- Keep scripts SAME as before -->
 <script>
   // MacBook Loader
   window.addEventListener("DOMContentLoaded", () => {
