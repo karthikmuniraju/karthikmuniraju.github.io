@@ -34,108 +34,59 @@
       font-family: var(--body);
       letter-spacing:.01em;
     }
-    /* Loader */
     #loader {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
+      position: fixed; inset: 0; z-index: 9999;
       background: #181827 linear-gradient(120deg, #232246 0, #1e1835 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
       transition: opacity 0.5s ease-in-out;
       min-height: 100vh;
     }
     #loader.fade-out { opacity: 0; pointer-events: none; }
     .macbook-loader { display: flex; flex-direction: column; align-items: center; margin-bottom: 0.5em; }
-    .macbook-logo {
-      width: 54px; height: 54px;
-      background: #fff; border-radius: 13px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 2px 14px #6658f746, 0 0 8px #ececec40;
-      margin-bottom: 0.8em;
-    }
-    .macbook-logo img {
-      width: 30px; height: 30px;
-      border-radius: 6px;
-    }
-    .macbook-bar-bg {
-      width: 102px; height: 8px;
-      background: #312e59; border-radius: 6px;
-      overflow: hidden; margin-bottom: 0.4em;
-    }
-    .macbook-bar-fg {
-      height: 100%;
-      background: linear-gradient(90deg, #fff, #b6c0ec 93%);
-      border-radius: 7px;
-      width: 0;
-      transition: width .25s cubic-bezier(.5,2,.4,1);
-    }
-    .loader-percentage {
-      text-align: center; font-weight: bold;
-      color: var(--secondary);
-      font-size: 0.99em; letter-spacing: .08em;
-    }
+    .macbook-logo {width: 54px; height: 54px; background: #fff; border-radius: 13px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.8em;}
+    .macbook-logo img {width: 30px; height: 30px; border-radius: 6px;}
+    .macbook-bar-bg {width: 102px; height: 8px; background: #312e59; border-radius: 6px; overflow: hidden; margin-bottom: 0.4em;}
+    .macbook-bar-fg {height: 100%; background: linear-gradient(90deg, #fff, #b6c0ec 93%); border-radius: 7px; width: 0; transition: width .25s cubic-bezier(.5,2,.4,1);}
+    .loader-percentage {text-align: center; font-weight: bold; color: var(--secondary); font-size: 0.99em;}
     #loader p {color: #cfcbec;font-size:.98em;}
-
-    /* Navbar */
-    .navbar {
-      position: sticky; top: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0.9em 2.2em; max-width:1080px;
-      margin:28px auto 0 auto;
-      background: rgba(44,34,77,0.85); border-radius: 32px;
-      box-shadow:0 8px 40px #6f58e828,0 2px 14px #1b1639ab;
-      backdrop-filter: blur(16px);
-    }
+    .navbar {position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.9em 2.2em; max-width:1080px; margin:28px auto 0 auto; background: rgba(44,34,77,0.85); border-radius: 32px;}
     .navbar .logo {display: flex; align-items: center; font-family: var(--heading); font-weight: 700; font-size: 2rem; color: var(--primary); gap: 0.67em;}
-    .navbar .avatar {width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2.5px solid #fff; background: #fff; margin-right: .55em;}
-    .navbar nav { display: flex; gap: 1.18em; }
-    .navbar nav a { color: var(--text); padding: .39em 1em; border-radius: 12px; font-weight: 700; text-decoration: none; font-family: var(--heading); transition: all .19s;}
-    .navbar nav a:hover, .navbar nav a.active { background: linear-gradient(90deg,#6f58e8 58%, #20e3b2 100%); color:#fff; transform:scale(1.08);}
-
-    /* Hero */
-    .hero { max-width: 850px; margin: 64px auto; display: flex; border-radius: var(--radius); background: linear-gradient(120deg,rgba(116,94,255,0.11) 30%, #232246d8 100%); box-shadow:0 16px 64px #6f58e840; padding: 52px 40px;}
-    .hero-visual { flex:0 0 200px; display:flex; flex-direction:column; align-items:center; }
-    .hero-img { width: 160px; height: 160px; border-radius: 40px; border: 4px solid var(--secondary); object-fit: cover; box-shadow: 0 8px 60px #20e3b29a,0 0 0 8px #6f58e8ab; margin-bottom:1.1em;}
-    .hero-social { display: flex; gap: 18px; margin-top: 1.5em;}
-    .hero-social a { color: var(--primary); background: #fff4; border-radius: 50%; padding: .16em .41em; font-size: 1.5em; transition: all .14s; }
-    .hero-social a:hover { color: var(--accent); background: #fff; }
-    .hero-info { flex:1; padding-left: 38px; }
-    .badge { background: linear-gradient(90deg,#20e3b2 0,#6f58e8 100%); padding: .26em 1.07em; border-radius: 13px; font-weight: 700; margin-bottom: 1em; display: inline-block; }
-    .hero-name { font-size: 2.7em; font-weight: 900; color: #fff; font-family:var(--heading);}
-    .hero-role { font-size: 1.28em; color: var(--secondary); font-weight: 700; margin-bottom: 1em; font-family:var(--heading);}
+    .navbar .avatar {width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2.5px solid #fff; background: #fff;}
+    .navbar nav {display: flex; gap: 1.18em;}
+    .navbar nav a {color: var(--text); padding: .39em 1em; border-radius: 12px; font-weight: 700; text-decoration: none;}
+    .navbar nav a:hover {background: linear-gradient(90deg,#6f58e8,#20e3b2); color:#fff;}
+    .hero {max-width: 850px; margin: 64px auto; display: flex; border-radius: var(--radius);}
+    .hero-img {width: 160px; height: 160px; border-radius: 40px; border: 4px solid var(--secondary); object-fit: cover; margin-bottom:1.1em;}
+    .hero-social {display: flex; gap: 18px;}
+    .hero-social a {color: var(--primary); background: #fff4; border-radius: 50%; padding: .16em .41em; font-size: 1.5em;}
+    .hero-info {flex:1; padding-left: 38px;}
+    .badge {background: linear-gradient(90deg,#20e3b2,#6f58e8); padding: .26em 1.07em; border-radius: 13px; font-weight: 700;}
+    .hero-name {font-size: 2.7em; font-weight: 900; color: #fff;}
+    .hero-role {font-size: 1.28em; color: var(--secondary); font-weight: 700; font-family:var(--heading);}
     .hero-desc { font-size:1.18em; color:var(--muted); margin-bottom:2.2em; line-height: 1.53; text-shadow:0 1px 14px #23224648;}
-    .cta-btns { display:flex;gap:1.22em;flex-wrap:wrap;}
-    .cta-btn { background: var(--primary); color:#fff; padding:.8em 2em; border-radius:32px; text-decoration:none; font-weight:800; }
-    .cta-btn.contact { background:transparent; color: var(--primary); border:2px solid var(--primary); }
-
-    /* Sections */
-    .section-card { background: var(--section); border-radius: var(--card-radius); box-shadow: var(--shadow); margin:2em auto; max-width:810px; padding:2em; opacity:0; transform:translateY(50px); transition:all .6s; }
-    .section-card.visible { opacity:1; transform:translateY(0); }
-    .section-card h2 { font-family: var(--heading); color:var(--primary); margin-bottom: 1em; }
-    .skills-grid,.projects-grid,.certs { display: grid; gap: 1.18em; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); }
-    .skill-card,.project-card,.cert-card { background:#232246e0; border-radius:16px; padding:1.08em 1em; transition:.18s; }
-    .tech-item { background:#6658f719; color:var(--primary); padding:.3em 1em; border-radius:10px; margin:2px; display:inline-block; }
-    .timeline { border-left:4px solid var(--primary); padding-left:19px; }
-    .timeline-date { color:var(--secondary); font-weight:bold; }
-
-    /* Footer */
-    .footer { text-align:center; color:#babacd; margin:3em 0 1.2em; }
-    .social-links { display:flex; justify-content:center; gap:22px; margin-bottom:.8em; }
-    .social-links a { color:var(--primary); font-size:1.3em; }
-    .social-links a:hover { color:var(--secondary); }
+    .cta-btns {display:flex; gap:1.22em;}
+    .cta-btn {background: var(--primary); color:#fff; padding:.8em 2em; border-radius:32px; text-decoration:none; font-weight:800;}
+    .cta-btn.contact {background:transparent; color: var(--primary); border:2px solid var(--primary);}
+    .section-card {background: var(--section); border-radius: var(--card-radius); margin:2em auto; max-width:810px; padding:2em; opacity:0; transform:translateY(50px); transition:all .6s;}
+    .section-card.visible {opacity:1; transform:translateY(0);}
+    .projects-grid, .skills-grid, .certs {display: grid; gap: 1.18em; grid-template-columns: repeat(auto-fit,minmax(240px,1fr));}
+    .project-card, .skill-card, .cert-card {background:#232246e0; border-radius:16px; padding:1.08em 1em;}
+    .tech-item {background:#6658f719; color:var(--primary); padding:.3em 1em; border-radius:10px; margin:2px; display:inline-block;}
+    .timeline { border-left:4px solid var(--primary); padding-left:19px;}
+    .timeline-date { color:var(--secondary); font-weight:bold;}
+    .footer {text-align:center; color:#babacd; margin:3em 0 1.2em;}
+    .social-links {display:flex; justify-content:center; gap:22px; margin-bottom:.8em;}
+    .social-links a {color:var(--primary); font-size:1.3em;}
+    .social-links a:hover {color:var(--secondary);}
+    @media (max-width:900px){.hero{flex-direction:column;align-items:center;padding:32px 13px;}.hero-info{padding-left:0;}}
+    @media (max-width:670px){.navbar{flex-direction:column;align-items:flex-start;padding:.62em 1em;}.navbar nav{margin-top:.6em;}.section-card,.hero{max-width:100vw;}}
   </style>
 </head>
 <body>
-
 <!-- Loader -->
 <div id="loader">
   <div class="macbook-loader">
-    <div class="macbook-logo">
-      <img src="asset/images/A9D54B6C-0FF5-421F-BC1C-9D0726E6529B.PNG" alt="logo"/>
-    </div>
+    <div class="macbook-logo"><img src="asset/images/A9D54B6C-0FF5-421F-BC1C-9D0726E6529B.PNG" alt="logo"/></div>
     <div class="macbook-bar-bg"><div class="macbook-bar-fg" id="progressBar"></div></div>
   </div>
   <div class="loader-percentage" id="loader-percentage">0%</div>
@@ -144,7 +95,7 @@
 
 <!-- Navbar -->
 <div class="navbar">
-  <span class="logo"><img class="avatar" src="asset/images/A9D54B6C-0FF5-421F-BC1C-9D0726E6529B.PNG" alt="logo"/> Karthik M</span>
+  <span class="logo"><img class="avatar" src="asset/images/A9D54B6C-0FF5-421F-BC1C-9D0726E6529B.PNG" alt="logo"/>Karthik M</span>
   <nav>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
@@ -163,14 +114,18 @@
     <div class="hero-social">
       <a href="https://linkedin.com/in/karthik-m-24077b219/" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="https://github.com/karthikmuniraju" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="mailto:mkarthik2000@icloud.com"><i class="fas fa-envelope"></i></a>
+      <a href="mailto:mkarthik2000@icloud.com" target="_blank"><i class="fas fa-envelope"></i></a>
     </div>
   </div>
   <div class="hero-info">
     <div class="badge">Senior Systems Engineer · Infosys</div>
     <div class="hero-name">Karthik M</div>
     <div class="hero-role">Full Stack Developer (Java Spring Boot &amp; Angular)</div>
-    <div class="hero-desc">🚀 Passionate about building scalable banking & digital financial solutions.</div>
+    <div class="hero-desc">
+      <span style="font-size:1.13em; color:#fff; font-weight:600;">"Building seamless, secure digital experiences for next-gen banking."</span><br>
+      🚀 Passionate engineer blending technology & business, trusted to deliver robust solutions for top financial brands.<br>
+      <span style="color:#20e3b2;font-size:1em;">Ready for the next challenge—let's build the future together.</span>
+    </div>
     <div class="cta-btns">
       <a href="resume.pdf" class="cta-btn" download><i class="fas fa-file-arrow-down"></i> Download Resume</a>
       <a href="#contact" class="cta-btn contact"><i class="fas fa-envelope"></i> Contact Me</a>
@@ -182,9 +137,11 @@
 <div id="about" class="section-card">
   <h2>About Me</h2>
   <ul>
-    <li>🚀 Senior Systems Engineer at Infosys (Finacle), driving digital banking innovation.</li>
-    <li>⭐ Tech Stack: HTML, CSS, JavaScript, Angular, Java, jQuery, Spring Boot</li>
-    <li>⚡ Expertise: Secure, high-performance web applications.</li>
+    <li>🚀 <b>Senior Systems Engineer</b> at Infosys (Finacle), driving digital banking innovation.</li>
+    <li>⭐ <b>Tech Stack:</b> <span style="color:#ff8a00;">HTML</span>, <span style="color:#20e3b2;">CSS</span>, <span style="color:#6658f7;">JavaScript</span>, <span style="color:#1a73e8;">Angular</span>, <span style="color:#00897b;">Java</span>, <span style="color:#ea4c89">jQuery</span>, <span style="color:#cc00cc;">Spring Boot</span></li>
+    <li>⚡ <b>Expertise:</b> Building fast, secure apps with delightful UX and robust security.</li>
+    <li>🤝 <b>Strengths:</b> Team collaboration, energetic learning, embracing new tech.</li>
+    <li>📍 <b>Location:</b> Bengaluru 🇮🇳 · <b>Email:</b> mkarthik2000@icloud.com · <b>Phone:</b> (+91) 9972503858</li>
   </ul>
 </div>
 
@@ -192,10 +149,40 @@
 <div id="skills" class="section-card">
   <h2>Technical Skills</h2>
   <div class="skills-grid">
-    <div class="skill-card"><h3>Frontend</h3><ul><li>Angular</li><li>HTML5, CSS3</li><li>JavaScript, jQuery</li></ul></div>
-    <div class="skill-card"><h3>Backend</h3><ul><li>Java, Spring Boot</li><li>Spring Security, REST APIs</li></ul></div>
-    <div class="skill-card"><h3>Database & DevOps</h3><ul><li>MySQL, MongoDB</li><li>Jenkins, Git, Docker, Kubernetes</li></ul></div>
-    <div class="skill-card"><h3>Banking Domain</h3><ul><li>Infosys Finacle Expertise</li></ul></div>
+    <div class="skill-card">
+      <h3><i class="fab fa-angular" style="color:#dd0031;"></i> Frontend</h3>
+      <ul>
+        <li><span class="tech-item" style="background:#e0e7ff; color:#473bfa;">Angular (TypeScript)</span></li>
+        <li><span class="tech-item" style="background:#ffe0b2; color:#6658f7;">HTML5, CSS3</span></li>
+        <li><span class="tech-item" style="background:#b2fff0; color:#00897b;">JavaScript (ES6+) &amp; jQuery</span></li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3><i class="fas fa-server" style="color:#20e3b2;"></i> Backend</h3>
+      <ul>
+        <li><span class="tech-item" style="color:#2e7d32;">Java</span>, <span class="tech-item" style="color:#cc00cc;">Spring Boot</span></li>
+        <li><span class="tech-item">Spring Security, JWT</span></li>
+        <li><span class="tech-item">RESTful API, Microservices</span></li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3><i class="fas fa-database" style="color:#ffa000;"></i> Database &amp; DevOps</h3>
+      <ul>
+        <li><span class="tech-item">MySQL, Spring Data JPA</span></li>
+        <li><span class="tech-item" style="background:#e3fad7; color:#228b22;">Jenkins CI/CD, Git</span></li>
+        <li><span class="tech-item">Ansible, Terraform, Docker</span></li>
+        <li><span class="tech-item">Unix/Linux, WaveMaker</span></li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3><i class="fas fa-building" style="color:#ff8a00;"></i> Banking Domain</h3>
+      <ul>
+        <li><span class="tech-item">Infosys Finacle Expertise</span></li>
+        <li><span class="tech-item">Product Development</span></li>
+        <li><span class="tech-item">Security Standards</span>
+          <span style="color:#20e3b2;">Digital Banking Solutions</span></li>
+      </ul>
+    </div>
   </div>
 </div>
 
@@ -203,55 +190,159 @@
 <div id="experience" class="section-card">
   <h2>Professional Experience</h2>
   <div class="timeline">
-    <div class="timeline-item"><span class="timeline-date">2024-Present</span><h3>Senior Systems Engineer</h3><h4>Infosys</h4><ul><li>Built secure, high-impact banking apps.</li></ul></div>
+    <div class="timeline-item">
+      <span class="timeline-date">Oct 2024 - Present</span>
+      <h3>Senior Systems Engineer</h3>
+      <h4>Infosys Finacle</h4>
+      <ul>
+        <li>🌟 Built secure, high-impact banking and fintech applications as part of the Infosys Finacle engineering team.</li>
+        <li>🏆 Enhanced customer experience, optimized banking processes and led full-stack feature deliveries using Agile.</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <span class="timeline-date">Jun 2022 - Sep 2024</span>
+      <h3>System Engineer</h3>
+      <h4>Infosys Finacle</h4>
+      <ul>
+        <li>🧑‍💻 Completed immersive training: Java Spring Boot, Angular, WaveMaker, Unix/Linux environments.</li>
+        <li>🚀 Developed & deployed key banking modules and customizations for major clients.</li>
+      </ul>
+    </div>
   </div>
 </div>
 
 <!-- Main Projects -->
 <div id="projects" class="section-card">
-  <h2>Main Projects</h2>
+  <h2>Key Projects</h2>
   <div class="projects-grid">
-    <div class="project-card"><h3>RM Workbench</h3><p>Enterprise RM Tool for banking staff...</p></div>
+    <div class="project-card">
+      <h3>RM Workbench <span class="tech-item">20 Months</span></h3>
+      <ul>
+        <li>🚀 Led Angular &amp; Java development of Finacle's Relationship Manager Workbench, delivering features that empower banking staff.</li>
+        <li>👍 Improved productivity +20%, reduced delivery timelines using Agile best practices.</li>
+      </ul>
+      <div class="tech-stack"><span class="tech-item">Angular</span> <span class="tech-item">Java</span> <span class="tech-item">Finacle</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <h3>ICICI Bank Customization <span class="tech-item">12 Months</span></h3>
+      <ul>
+        <li>🔧 Built custom Finacle RM Workbench for ICICI, enhancing workflows, boosting staff efficiency and experience.</li>
+        <li>✨ Achieved positive client feedback and tangible process improvements.</li>
+      </ul>
+      <div class="tech-stack"><span class="tech-item">Spring Boot</span> <span class="tech-item">Angular</span> <span class="tech-item">Finacle</span></div>
+    </div>
+    <div class="project-card">
+      <h3>Infy eKart <span class="tech-item">3 Months</span></h3>
+      <ul>
+        <li>🛒 Built full-stack e-commerce platform in Angular &amp; Java, secured by JWT.</li>
+        <li>🔐 Features: authentication, product catalog, cart, robust APIs, deployed on cloud.</li>
+      </ul>
+      <div class="tech-stack"><span class="tech-item">Angular</span> <span class="tech-item">Java</span> <span class="tech-item">Spring Boot</span> <span class="tech-item">MySQL</span></div>
+    </div>
   </div>
 </div>
 
-<!-- ===== NEW Personal Projects Section ===== -->
+<!-- Personal Projects -->
 <div id="personal-projects" class="section-card">
   <h2>Personal Projects</h2>
   <div class="projects-grid">
     <div class="project-card">
       <h3>Deployed Microservices Go App</h3>
-      <p>Designed and deployed a cloud-native microservices application in Go, containerized with Docker and orchestrated using Kubernetes. Implemented service discovery, load balancing, and CI/CD workflows for automated deployments.</p>
+      <ul>
+        <li>Designed and deployed a cloud-native microservices application in Go (Golang).</li>
+        <li>Dockerized services; orchestrated with Kubernetes for automated failover and scaling.</li>
+        <li>Setup CI/CD (GitHub Actions) for rapid deployments, enabling zero-downtime upgrades.</li>
+        <li>Engineered secure REST APIs and integrated service discovery for robust communication.</li>
+      </ul>
+      <div class="tech-stack">
+        <span class="tech-item">Go</span>
+        <span class="tech-item">Docker</span>
+        <span class="tech-item">Kubernetes</span>
+        <span class="tech-item">CI/CD</span>
+      </div>
     </div>
     <div class="project-card">
-      <h3>CRUD App with Java, Angular & SQL</h3>
-      <p>Full-stack CRUD web app using Java Spring Boot for REST APIs, Angular for the frontend, and SQL Database for persistent storage. Focused on clean architecture, responsive UI, and enterprise-standard security layers.</p>
+      <h3>CRUD App – Java, Angular & SQL</h3>
+      <ul>
+        <li>Developed a full-stack CRUD application for managing resources using Spring Boot REST APIs.</li>
+        <li>Responsive Angular UI featuring search, filter, authentication, and dashboard analytics.</li>
+        <li>SQL database for secure storage; implemented enterprise-grade access control.</li>
+        <li>Deployed to cloud with auto-scaling; used Angular Material for sleek UX.</li>
+      </ul>
+      <div class="tech-stack">
+        <span class="tech-item">Java Spring Boot</span>
+        <span class="tech-item">Angular</span>
+        <span class="tech-item">SQL</span>
+        <span class="tech-item">Angular Material</span>
+      </div>
     </div>
     <div class="project-card">
-      <h3>YouTube Clone with AWS S3 & MongoDB</h3>
-      <p>Developed a video streaming platform in Java Spring Boot integrated with AWS S3 for video storage, MongoDB for metadata, and Angular + Angular Material for the frontend. Implemented secure video upload, search, and adaptive streaming.</p>
+      <h3>YouTube Clone: Java, AWS S3, MongoDB</h3>
+      <ul>
+        <li>Created a video streaming platform with Spring Boot backend and Angular Material frontend.</li>
+        <li>Integrated Spring Boot with AWS S3 for scalable video uploads and secure storage.</li>
+        <li>MongoDB for fast, dynamic video metadata/query; JWT-based authentication.</li>
+        <li>Provides search, adaptive streaming. Clean UI and RESTful APIs throughout.</li>
+      </ul>
+      <div class="tech-stack">
+        <span class="tech-item">Java Spring Boot</span>
+        <span class="tech-item">MongoDB</span>
+        <span class="tech-item">AWS S3</span>
+        <span class="tech-item">Angular</span>
+      </div>
     </div>
     <div class="project-card">
-      <h3>2048 Game on Kubernetes</h3>
-      <p>Containerized and deployed the 2048 puzzle game on a Kubernetes cluster. Configured Ingress and AWS ALB for external accessibility, enabling scalable high-availability gaming as a service demo.</p>
+      <h3>2048 Game on Kubernetes Cluster</h3>
+      <ul>
+        <li>Containerized the open-source 2048 puzzle game, deployed on Kubernetes with zero-downtime rolling updates.</li>
+        <li>Used Kubernetes Ingress and AWS ALB for public access; monitored app health using Prometheus.</li>
+        <li>Automated deployment pipeline via CI/CD; documented setup for other DevOps learners.</li>
+        <li>Demonstrates scalable game deployments, DevOps best practices, and cloud app exposure.</li>
+      </ul>
+      <div class="tech-stack">
+        <span class="tech-item">Kubernetes</span>
+        <span class="tech-item">Docker</span>
+        <span class="tech-item">AWS ALB</span>
+        <span class="tech-item">CI/CD</span>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Certifications -->
 <div id="certifications" class="section-card">
-  <h2>Certifications & Education</h2>
+  <h2>Certifications &amp; Education</h2>
   <div class="certs">
-    <div class="cert-card"><h3>Infosys Certifications</h3><ul><li>Java-Angular Full Stack Development</li></ul></div>
-    <div class="cert-card"><h3>Education</h3><ul><li>B.Tech in Civil Engineering, VTU 2022</li></ul></div>
+    <div class="cert-card">
+      <h3>Infosys Certifications</h3>
+      <ul>
+        <li>✅ Java-Angular Full Stack Development</li>
+        <li>✅ Spring Boot Service Layer Architect</li>
+        <li>✅ REST API &amp; Single Page Apps with Angular</li>
+      </ul>
+    </div>
+    <div class="cert-card">
+      <h3>Education</h3>
+      <ul>
+        <li>🎓 Bachelor of Engineering (Civil)</li>
+        <li>🏫 Visveswaraiah Technological University (VTU), 2022</li>
+      </ul>
+    </div>
   </div>
 </div>
 
 <!-- Resume -->
 <div id="resume" class="section-card">
   <h2>Download My Resume</h2>
-  <p>ATS-friendly resume highlighting my full-stack expertise.</p>
-  <a href="resume.pdf" class="cta-btn" download>Download PDF</a>
+  <div class="resume-box" style="text-align:center;">
+    <b style="font-size:1.12em;letter-spacing:.04em;">Karthik M - Full Stack Developer</b>
+    <p style="font-family:'Space Grotesk',Arial,sans-serif;">
+      <span style="color:#20e3b2;">Level up your tech team</span> with my proven expertise in digital banking, cloud-native apps, DevOps, and secure backend engineering.<br>
+      Get my streamlined, ATS-friendly resume—see why Infosys trusts me for their top banking apps!
+    </p>
+    <a href="resume.pdf" class="cta-btn" download><i class="fas fa-file-arrow-down"></i> Download Resume (PDF)</a>
+  </div>
 </div>
 
 <!-- Footer -->
@@ -259,34 +350,33 @@
   <div class="social-links">
     <a href="https://linkedin.com/in/karthik-m-24077b219/" target="_blank"><i class="fab fa-linkedin"></i></a>
     <a href="https://github.com/karthikmuniraju" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="mailto:mkarthik2000@icloud.com"><i class="fas fa-envelope"></i></a>
+    <a href="mailto:mkarthik2000@icloud.com" target="_blank"><i class="fas fa-envelope"></i></a>
   </div>
-  <div><b>Karthik M</b> · Bengaluru, India</div>
+  <div>
+    <b>Karthik M</b> · Bengaluru, India<br/>
+    (+91) 9972503858 · mkarthik2000@icloud.com
+    <div style="margin-top:.6em;opacity:.7;">&copy; 2025 Karthik M. All Rights Reserved.</div>
+  </div>
 </div>
 
+<!-- Scripts -->
 <script>
-  // Loader until full load
   window.addEventListener("load", () => {
-    const loader = document.getElementById("loader"),
-          percentElem = document.getElementById("loader-percentage"),
-          progressBar = document.getElementById("progressBar");
+    const loader = document.getElementById("loader");
+    const percentElem = document.getElementById("loader-percentage");
+    const progressBar = document.getElementById("progressBar");
     let percent = 0;
     const interval = setInterval(() => {
       percent += 2;
       percentElem.textContent = percent + "%";
       progressBar.style.width = percent + "%";
-      if (percent >= 100) {
-        clearInterval(interval);
-        loader.classList.add("fade-out");
-      }
+      if (percent >= 100) { clearInterval(interval); loader.classList.add("fade-out"); }
     }, 18);
   });
-  // Animate sections
+  // Section card fade-in animation
   const cards = document.querySelectorAll('.section-card');
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) entry.target.classList.add("visible");
-    });
+    entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add("visible"); });
   }, {threshold: 0.15});
   cards.forEach(card => observer.observe(card));
 </script>
