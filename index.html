@@ -3,58 +3,322 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Karthik M – Portfolio</title>
-  <!-- Favicon -->
+  <title>Karthik M – Modern Portfolio</title>
   <link rel="icon" type="image/png" href="asset/images/A9D54B6C-0FF5-421F-BC1C-9D0726E6529B.PNG"/>
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"/>
+  <!-- Google Fonts: Space Grotesk for headings, Inter for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
-    /* Root & Global */
-    :root { --primary:#6658f7; --secondary:#20e3b2; --surface:#232246f9; --glass:rgba(60,30,120,0.21); --bg:#181827; --text:#f6f7fc; --muted:#b2b5c9; --accent:#ff8a00; --radius:22px; --shadow:0 8px 40px #6658f744; }
-    html,body{margin:0;padding:0;}
-    body{min-height:100vh;font-size:18px;background:linear-gradient(135deg,#1a1a2e 0,#232246 100%);color:var(--text);font-family:'Inter',Arial,sans-serif;letter-spacing:.01em;scroll-behavior:smooth;}
-    /* Loader */
-    #loader{position:fixed;inset:0;z-index:9999;background:#181827 linear-gradient(120deg,#232246 0,#1e1835 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity .5s;min-height:100vh;}
-    #loader.fade-out{opacity:0;pointer-events:none;}
-    .macbook-loader{display:flex;flex-direction:column;align-items:center;margin-bottom:1.45em;}
-    .macbook-logo{width:64px;height:64px;background:#fff;border-radius:22px;display:flex;align-items:center;justify-content:center;margin-bottom:1.15em;}
-    .macbook-bar-bg{width:120px;height:12px;background:#312e59;border-radius:6px;overflow:hidden;margin-bottom:1em;}
-    .macbook-bar-fg{height:100%;background:linear-gradient(90deg,#fff,#b6c0ec 93%);border-radius:7px;width:0;transition:width .30s cubic-bezier(.5,2,.4,1);}
-    .loader-percentage{text-align:center;font-weight:bold;color:var(--primary);font-size:1.17em;letter-spacing:.1em;margin-bottom:1.2em;}
-    /* Navbar */
-    .navbar{display:flex;justify-content:space-between;max-width:1180px;margin:1.3em auto 0;align-items:center;border-radius:80px;background:rgba(37,34,58,0.8);padding:.8em 2.7em;}
-    .navbar .logo{color:var(--primary);font-weight:bold;font-size:2rem;display:flex;align-items:center;gap:.4em;}
-    .navbar ul{display:flex;gap:1.5em;list-style:none;margin:0;padding:0;font-weight:600;}
-    .navbar a{color:var(--text);text-decoration:none;border-radius:19px;padding:.48em 1.29em;}
-    .navbar a:hover,.navbar a.active{background:var(--primary);color:#fff;}
-    /* Hero */
-    .hero-card{max-width:700px;margin:75px auto 45px;background:linear-gradient(112deg,var(--glass) 70%,#2b2542 100%);border-radius:30px;box-shadow:0 10px 54px #6658f767,0 1.5px 90px #2c2b392b;display:flex;padding:56px 40px 38px 0;}
-    .hero-visual{flex:0 0 180px;display:flex;flex-direction:column;align-items:center;}
-    .hero-avatar{width:140px;height:140px;border-radius:38px;object-fit:cover;border:4px solid var(--primary);margin-bottom:1em;}
-    .hero-socials{display:flex;gap:17px;margin-top:1.5em;}
-    .hero-socials a{color:var(--primary);font-size:1.33em;background:#fff2;border-radius:50%;padding:.16em .35em;}
-    .hero-socials a:hover{color:var(--secondary);}
-    .hero-info{flex:1;padding-left:30px;}
-    .hero-badge{display:inline-block;margin-bottom:1.1em;background:linear-gradient(90deg,#20e3b2 0,#6658f7 100%);color:#1a1a2f;font-weight:700;border-radius:17px;padding:.31em 1.3em;}
-    .hero-name{font-size:2.5em;font-weight:900;color:var(--primary);}
-    .hero-role{font-size:1.13em;color:var(--secondary);font-weight:700;margin-bottom:.72em;}
-    .hero-desc{font-size:1.12em;color:var(--muted);margin-bottom:2.4em;}
-    .cta-btns{display:flex;gap:1.25em;flex-wrap:wrap;}
-    .cta-btn{background:var(--primary);color:#fff;padding:.82em 2em;border-radius:32px;text-decoration:none;font-weight:700;}
-    .cta-btn.contact{background:transparent;color:var(--primary);border:2px solid var(--primary);}
-    /* Sections */
-    .section-card{background:var(--glass);border-radius:var(--radius);box-shadow:0 4px 24px #6658f736;margin:2em 0;padding:2em 1.44em;}
-    .section-card h2{font-size:1.29em;color:var(--primary);font-weight:900;margin-bottom:1em;}
-    .skills-grid,.projects-grid,.certs{display:grid;gap:1.18em;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
-    .tech-item{background:#6658f719;color:var(--primary);padding:.3em 1em;border-radius:10px;font-size:.98em;}
-    .timeline{border-left:4px solid var(--primary);padding-left:19px;margin-top:1em;}
-    .timeline-date{color:var(--secondary);font-weight:bold;}
-    .footer{text-align:center;color:#babacd;margin:2.8em 0 1.2em;padding-bottom:1.38em;}
+    :root {
+      --primary: #6f58e8;
+      --secondary: #20e3b2;
+      --accent: #ff8a00;
+      --glass: rgba(60,30,120,0.17);
+      --surface: #232246;
+      --bg: #181827;
+      --section: rgba(40,34,70,0.76);
+      --radius: 28px;
+      --card-radius: 20px;
+      --shadow: 0 8px 32px #6f58e82b;
+      --heading: 'Space Grotesk', Arial, sans-serif;
+      --body: 'Inter', Arial, sans-serif;
+      --text: #f5f5fd;
+      --muted: #acafd6;
+    }
+    html,body {margin:0;padding:0;}
+    body {
+      min-height:100vh;
+      background: linear-gradient(120deg,#1b1639 0%, #3632cd 100%);
+      color: var(--text);
+      font-family: var(--body);
+      letter-spacing:.01em;
+    }
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9em 2.2em;
+      max-width:1080px;
+      margin:28px auto 0 auto;
+      background: rgba(44,34,77,0.85);
+      border-radius: 32px;
+      box-shadow:0 8px 40px #6f58e828,0 2px 14px #1b1639ab;
+      backdrop-filter: blur(16px);
+    }
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      font-family: var(--heading);
+      font-weight: 700;
+      font-size: 2rem;
+      color: var(--primary);
+      text-shadow: 0 3px 24px #6f58e8a0;
+      gap: 0.67em;
+    }
+    .navbar .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 6px 36px #20e3b2a1, 0 0 0 3px #ff8a00a5;
+      border: 2.5px solid #fff;
+      background: #fff;
+      margin-right: .55em;
+      transition: box-shadow .19s;
+    }
+    .navbar .avatar:hover {
+      box-shadow: 0 12px 44px #20e3b2c7,0 0 0 7px #ff8a0088;
+    }
+    .navbar nav {
+      display: flex;
+      gap: 1.2em;
+      align-items: center;
+      font-family: var(--heading);
+    }
+    .navbar nav a {
+      color: var(--text);
+      padding: .37em 1em;
+      border-radius: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      background: none;
+      letter-spacing:.02em;
+      transition: background .17s, color .21s, box-shadow .19s, transform .15s;
+      font-size: 1.11em;
+      box-shadow:0 1px 11px #6f58e80d;
+      border: none;
+    }
+    .navbar nav a:hover, .navbar nav a.active {
+      background: linear-gradient(90deg,#6f58e8 58%, #20e3b2 100%);
+      color: #fff;
+      box-shadow:0 3px 14px #20e3b25a;
+      transform: scale(1.08);
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 850px;
+      margin: 64px auto 70px auto;
+      display: flex;
+      gap:0; position: relative; border-radius: var(--radius);
+      background: linear-gradient(120deg,rgba(116,94,255,0.11) 30%, #232246d8 100%);
+      box-shadow:0 16px 64px #6f58e840;
+      padding: 52px 48px 50px 0;
+    }
+    .hero-visual {
+      flex:0 0 220px;display:flex;flex-direction:column;align-items:center;
+      min-width:200px;position:relative;
+    }
+    .hero-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 40px;
+      border: 4px solid var(--secondary);
+      object-fit: cover;
+      background: linear-gradient(120deg,#232246 60%, #e2e8fa 100%);
+      transition: box-shadow .21s;
+      box-shadow: 0 8px 60px #20e3b29a,0 0 0 8px #6f58e8ab;
+      margin-bottom:1.1em;
+    }
+    .hero-social {
+      display: flex; gap: 18px; margin-top: 1.5em;
+    }
+    .hero-social a {
+      color: var(--primary);
+      background: #fff4;
+      border-radius: 50%;
+      padding: .18em .44em;
+      font-size: 1.55em;
+      transition: color .16s, background .14s, transform .14s;
+      box-shadow: 0 3px 16px #6f58e86a;
+      display: inline-flex; align-items: center; justify-content:center;
+    }
+    .hero-social a:hover { color: var(--accent); background: #fff; transform: scale(1.13);}
+    .hero-info {
+      flex:1;display:flex;flex-direction:column;justify-content:center;padding-left:38px;
+    }
+    .hero-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .badge {
+      background: linear-gradient(90deg,#20e3b2 0,#6f58e8 100%);
+      color: #161730;
+      font-family: var(--heading);
+      font-weight: 700;
+      border-radius: 13px;
+      font-size: 1em;
+      padding: .26em 1.07em;
+      box-shadow:0 1px 10px #6f58e825;
+      letter-spacing:.07em;
+      margin-bottom: 1.14em;
+    }
+    .hero-name {
+      font-size: 2.7em;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: .01em;
+      font-family: var(--heading);
+      text-shadow:0 4px 46px #6f58e83f;
+      margin-bottom: .25em;
+    }
+    .hero-role {
+      font-size: 1.28em;
+      color: var(--secondary);
+      font-weight: 700;
+      font-family: var(--heading);
+      letter-spacing: .04em;
+      margin-bottom: .92em;
+    }
+    .hero-desc {
+      font-size:1.21em;
+      color:var(--muted);
+      font-family:var(--body);
+      margin-bottom:2.5em;
+      line-height: 1.6;
+      text-shadow:0 1px 16px #23224648;
+    }
+    .cta-btns {
+      display:flex;gap:1.29em;margin-top:.4em;
+    }
+    .cta-btn {
+      font-family:var(--heading);
+      font-weight:800;
+      font-size:1.08em;
+      color:#fff;
+      text-decoration:none;
+      background: linear-gradient(90deg, #6658f7 64%, #20e3b2 100%);
+      padding:.82em 2.1em;border-radius:32px;
+      box-shadow:0 3px 18px #6658f750;
+      transition: background .16s, color .13s, box-shadow .12s;
+      letter-spacing:.03em;
+      display:inline-flex;align-items:center;gap:.7em;
+    }
+    .cta-btn.contact {
+      background:linear-gradient(90deg,#fff 15%, #20e3b2 80%)!important;color:#6658f7!important;border:2px solid #6f58e8;
+    }
+    .cta-btn:hover,.cta-btn:focus {background: var(--secondary) !important; color: #fff !important;}
+    .cta-btn i {font-size:1.1em;}
+    @media (max-width:900px) {
+      .hero{flex-direction:column;align-items:center;padding:32px 13px;}
+      .hero-info{padding-left:0;}
+    }
+    @media(max-width:650px){
+      .navbar, .hero, .section-card{max-width:98vw;padding-left:3vw;padding-right:3vw;}
+      .hero-name{font-size:1.6em;}
+      .navbar nav a{font-size:.95em;}
+      .section-card{padding:1.7em 1em;}
+    }
+    /* Cards / Sections */
+    .section-card {
+      background: var(--section);
+      border-radius: var(--card-radius);
+      box-shadow:0 8px 44px #6f58e824;
+      margin:2em auto;max-width:810px;position:relative;overflow:hidden;
+      padding:2em 2em 1.7em 2em;
+      animation:fadeInUp 1s cubic-bezier(.4,.8,.2,1.06) both;
+      opacity:0;
+      transform:translateY(50px) scale(.97);
+      transition: all .62s cubic-bezier(.5,.8,.29,.94);
+    }
+    .section-card.visible {opacity:1;transform:translateY(0) scale(1);}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(50px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
+    .section-card h2 {
+      font-family: var(--heading);
+      font-size:1.4em;
+      color:var(--primary);
+      font-weight:900;
+      margin-bottom:1em;
+      border-left:7px solid var(--accent);
+      padding-left: .49em;
+      background:linear-gradient(90deg, #201e30bb, #2d2955cc 99%);
+      border-radius:12px;display:inline-block;
+      letter-spacing:.02em;
+    }
+    .section-card ul {
+      margin:.2em 0 .8em .1em;
+      padding:0 1em;
+      list-style:none;
+      font-size:1.08em;
+      font-family:var(--body);
+      letter-spacing:.07em;
+      line-height:1.44;
+    }
+    .section-card ul li {
+      margin: .18em 0;
+      padding-left: .25em;
+      position: relative;
+      font-weight: 500;
+    }
+    .section-card ul li::before {
+      content: "•";
+      color: var(--primary);
+      margin-right: 0.65em;
+      font-size: 1.12em;
+      font-family: var(--heading);
+      vertical-align: middle;
+      opacity:.7;
+      font-weight: bold;
+    }
+    /* Skill, Project, Cert Cards */
+    .skills-grid,.projects-grid,.certs{
+      display: grid;
+      gap: 1.18em;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      margin-top:.5em;
+    }
+    .skill-card,.project-card,.cert-card {
+      background: #232246e0;
+      border-radius:16px;
+      padding:1.08em 1em 1.2em;
+      box-shadow: 0 1.5px 12px #6f58e81a;
+      transition:transform .18s, box-shadow .17s;
+      position:relative;
+    }
+    .skill-card:hover, .project-card:hover, .cert-card:hover {
+      box-shadow: 0 7px 26px #20e3b26a, 0 3.5px 54px #6658f729;
+      transform: translateY(-2px) scale(1.011);
+    }
+    .skill-card h3, .project-card h3, .cert-card h3 {
+      color: var(--primary);
+      font-size:1.08em;
+      font-family: var(--heading);
+      font-weight:700;
+    }
+    .tech-item {
+      background:#6658f719;
+      color:var(--primary);
+      padding:.3em 1em;
+      border-radius:10px;
+      font-size:.97em;
+      font-weight:600;
+      margin-right: .25em;
+      margin-bottom: .17em;
+      display:inline-block;
+      letter-spacing:.03em;
+    }
+    .timeline {border-left:4px solid var(--primary);padding-left:19px;}
+    .timeline-date {color:var(--secondary);font-weight:bold;font-size:.95em;}
+    .timeline-item h3 {margin:0 0 .19em 0;font-size:1.06em;}
+    .timeline-item h4 {color:var(--primary);}
+    /* Footer */
+    .footer{margin:3em 0 1.2em 0;padding-bottom:1.38em;text-align:center;color:#babacd;font-size:1.1em;}
     .social-links{display:flex;justify-content:center;gap:22px;margin-bottom:.79em;}
-    .social-links a{color:var(--primary);font-size:1.13em;}
+    .social-links a{color:var(--primary);font-size:1.24em;background:none;}
     .social-links a:hover{color:var(--secondary);}
+    .footer b{color:#fff;font-size:1.1em;}
+    /* Responsive */
+    @media (max-width:670px){
+      .navbar{flex-direction:column;align-items:flex-start;padding:.62em 1em;}
+      .navbar nav{margin-top:.6em;}
+      .section-card,.hero{max-width:100vw;}
+    }
   </style>
 </head>
 <body>
@@ -72,30 +336,40 @@
 </div>
 
 <!-- Navbar -->
-<div class="navbar">
-  <span class="logo"><img src="asset/images/A9D54B6C-0FF5-421F-BC1C-9D0726E6529B.PNG" alt="logo"/> Karthik M</span>
-  <ul>
-    <li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#certifications">Certifications</a></li><li><a href="#resume">Resume</a></li>
-  </ul>
+<div class="navbar glass-navbar">
+  <span class="logo">
+    <img class="avatar" src="asset/images/A9D54B6C-0FF5-421F-BC1C-9D0726E6529B.PNG" alt="logo"/>
+    Karthik M
+  </span>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#resume">Resume</a>
+  </nav>
 </div>
 
-<!-- Hero -->
-<div class="hero-card">
+<!-- Hero Section -->
+<div class="hero">
   <div class="hero-visual">
-    <img src="asset/images/da455923-c0d4-4e81-befd-d7e65c4360ab.jpg" class="hero-avatar" alt="Karthik M">
-    <div class="hero-socials">
+    <img src="asset/images/da455923-c0d4-4e81-befd-d7e65c4360ab.jpg" class="hero-img" alt="Karthik M">
+    <div class="hero-social">
       <a href="https://linkedin.com/in/karthik-m-24077b219/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
       <a href="https://github.com/karthikmuniraju" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
       <a href="mailto:mkarthik2000@icloud.com" title="Email"><i class="fas fa-envelope"></i></a>
     </div>
   </div>
   <div class="hero-info">
-    <span class="hero-badge">Senior Systems Engineer · Infosys</span>
+    <div class="badge">Senior Systems Engineer · Infosys</div>
     <div class="hero-name">Karthik M</div>
     <div class="hero-role">Full Stack Developer (Java Spring Boot &amp; Angular)</div>
     <div class="hero-desc">
-      🚀 <b>Engineering professional</b> passionate about building scalable banking and digital financial solutions.<br>
-      Skilled at leading both <b>front-end</b> and <b>back-end</b> projects. Dedicated to creating impactful digital products.
+      <span style="font-size:1.13em; color:#fff; font-weight:600;">"Building seamless, secure digital experiences for next-gen banking."</span><br>
+      🚀 Passionate engineer blending technology & business, trusted to deliver robust solutions for top financial brands.
+      <br>
+      <span style="color:#20e3b2;font-size:1em;">Ready for the next challenge—let's build the future together.</span>
     </div>
     <div class="cta-btns">
       <a href="resume.pdf" class="cta-btn" download><i class="fas fa-file-arrow-down"></i> Download Resume</a>
@@ -104,87 +378,146 @@
   </div>
 </div>
 
-<!-- About -->
+<!-- About Section -->
 <div id="about" class="section-card">
   <h2>About Me</h2>
   <ul>
     <li>🚀 <b>Senior Systems Engineer</b> at Infosys (Finacle), driving digital banking innovation.</li>
-    <li>⭐ <b>Tech Stack:</b> HTML, CSS, JavaScript, Angular, Java, jQuery, Spring Boot</li>
-    <li>⚡ <b>Expertise:</b> High-performance, secure applications with delightful UX</li>
-    <li>🤝 <b>Strengths:</b> Team collaboration, fast learning, modern frameworks</li>
-    <li>📍 <b>Location:</b> Bengaluru, India · <b>Email:</b> mkarthik2000@icloud.com · <b>Phone:</b> (+91) 9972503858</li>
+    <li>⭐ <b>Tech Stack:</b> <span style="color:#ff8a00;">HTML</span>, <span style="color:#20e3b2;">CSS</span>, <span style="color:#6658f7;">JavaScript</span>, <span style="color:#1a73e8;">Angular</span>, <span style="color:#00897b;">Java</span>, <span style="color:#ea4c89">jQuery</span>, <span style="color:#cc00cc;">Spring Boot</span></li>
+    <li>⚡ <b>Expertise:</b> Fast, secure apps with delightful UX and strong security</li>
+    <li>🤝 <b>Strengths:</b> Team collaboration, energetic learning, embracing new tech</li>
+    <li>📍 <b>Location:</b> Bengaluru 🇮🇳 · <b>Email:</b> mkarthik2000@icloud.com · <b>Phone:</b> (+91) 9972503858</li>
   </ul>
 </div>
 
-<!-- Skills -->
+<!-- Skills Section -->
 <div id="skills" class="section-card">
   <h2>Technical Skills</h2>
   <div class="skills-grid">
-    <div class="skill-card"><h3><i class="fab fa-angular" style="color:#dd0031;"></i> Frontend</h3>
-      <ul><li>Angular (TypeScript)</li><li>HTML5, CSS3</li><li>JavaScript (ES6+), jQuery</li></ul>
+    <div class="skill-card">
+      <h3><i class="fab fa-angular" style="color:#dd0031;"></i> Frontend</h3>
+      <ul>
+        <li><span class="tech-item" style="background:#e0e7ff; color:#473bfa;">Angular (TypeScript)</span></li>
+        <li><span class="tech-item" style="background:#ffe0b2; color:#6658f7;">HTML5, CSS3</span></li>
+        <li><span class="tech-item" style="background:#b2fff0; color:#00897b;">JavaScript (ES6+) &amp; jQuery</span></li>
+      </ul>
     </div>
-    <div class="skill-card"><h3><i class="fas fa-server" style="color:#20e3b2;"></i> Backend</h3>
-      <ul><li>Java, Spring Boot</li><li>Spring Security, JWT</li><li>RESTful API, Microservices</li></ul>
+    <div class="skill-card">
+      <h3><i class="fas fa-server" style="color:#20e3b2;"></i> Backend</h3>
+      <ul>
+        <li><span class="tech-item" style="color:#2e7d32;">Java</span>, <span class="tech-item" style="color:#cc00cc;">Spring Boot</span></li>
+        <li><span class="tech-item">Spring Security, JWT</span></li>
+        <li><span class="tech-item">RESTful API, Microservices</span></li>
+      </ul>
     </div>
-    <div class="skill-card"><h3><i class="fas fa-database" style="color:#ffa000;"></i> Database &amp; DevOps</h3>
-      <ul><li>MySQL, Spring Data JPA</li><li>Jenkins CI/CD, Git</li><li>Ansible, Terraform</li><li>Docker, Unix/Linux, WaveMaker</li></ul>
+    <div class="skill-card">
+      <h3><i class="fas fa-database" style="color:#ffa000;"></i> Database &amp; DevOps</h3>
+      <ul>
+        <li><span class="tech-item">MySQL, Spring Data JPA</span></li>
+        <li><span class="tech-item" style="background:#e3fad7; color:#228b22;">Jenkins CI/CD, Git</span></li>
+        <li><span class="tech-item">Ansible, Terraform, Docker</span></li>
+        <li><span class="tech-item">Unix/Linux, WaveMaker</span></li>
+      </ul>
     </div>
-    <div class="skill-card"><h3><i class="fas fa-building" style="color:#ff8a00;"></i> Banking Domain</h3>
-      <ul><li>Infosys Finacle Expertise</li><li>Product Development</li><li>Security Standards, Digital Banking Solutions</li></ul>
+    <div class="skill-card">
+      <h3><i class="fas fa-building" style="color:#ff8a00;"></i> Banking Domain</h3>
+      <ul>
+        <li><span class="tech-item">Infosys Finacle Expertise</span></li>
+        <li><span class="tech-item">Product Development</span></li>
+        <li><span class="tech-item">Security Standards</span>
+          <span style="color:#20e3b2;">Digital Banking Solutions</span></li>
+      </ul>
     </div>
   </div>
 </div>
 
-<!-- Experience -->
+<!-- Experience Section -->
 <div id="experience" class="section-card">
   <h2>Professional Experience</h2>
   <div class="timeline">
-    <div class="timeline-item"><span class="timeline-date">Oct 2024 - Present</span>
-      <h3>Senior Systems Engineer</h3><h4>Infosys Finacle</h4>
-      <ul><li>🌟 Fullstack developer delivering secure, high-impact banking apps</li><li>🏆 Focus on innovation, customer experience, advanced engineering</li></ul>
+    <div class="timeline-item">
+      <span class="timeline-date">Oct 2024 - Present</span>
+      <h3>Senior Systems Engineer</h3>
+      <h4>Infosys Finacle</h4>
+      <ul>
+        <li>🌟 Building secure, high-impact banking apps that delight users and scale globally.</li>
+        <li>🏆 Focus on innovation, top-tier customer experience, and advanced engineering.</li>
+      </ul>
     </div>
-    <div class="timeline-item"><span class="timeline-date">Jun 2022 - Sep 2024</span>
-      <h3>System Engineer</h3><h4>Infosys Finacle</h4>
-      <ul><li>💻 Training: Java Spring Boot, Angular, WaveMaker, Unix</li><li>🚀 Hands-on development & deployment of apps</li></ul>
+    <div class="timeline-item">
+      <span class="timeline-date">Jun 2022 - Sep 2024</span>
+      <h3>System Engineer</h3>
+      <h4>Infosys Finacle</h4>
+      <ul>
+        <li>🧑‍💻 Completed immersive training: Java Spring Boot, Angular, WaveMaker, Unix.</li>
+        <li>🚀 Developed & deployed multiple banking modules, always learning new tech!</li>
+      </ul>
     </div>
   </div>
 </div>
 
-<!-- Projects -->
+<!-- Projects Section -->
 <div id="projects" class="section-card">
   <h2>Key Projects</h2>
   <div class="projects-grid">
-    <div class="project-card"><h3>RM Workbench <span class="tech-item">20 Months</span></h3>
-      <ul><li>🚀 Led Angular + Java development for Finacle's RM Workbench</li><li>👍 Boosted productivity +20%, reduced delivery time –15%</li></ul>
+    <div class="project-card">
+      <h3>RM Workbench <span class="tech-item">20 Months</span></h3>
+      <ul>
+        <li>🚀 Led Angular + Java development for Finacle's RM Workbench, delivering banking features with speed and flair.</li>
+        <li>👍 Boosted productivity <span style="color:#20e3b2;">+20%</span> and cut delivery time <span style="color:#6658f7;">–15%</span> with Agile best practices.</li>
+      </ul>
+      <div class="tech-stack"><span class="tech-item">Angular</span><span class="tech-item">Java</span><span class="tech-item">Finacle</span></div>
     </div>
-    <div class="project-card"><h3>ICICI Bank Customization <span class="tech-item">12 Months</span></h3>
-      <ul><li>🔧 Developed custom RM Workbench for ICICI</li><li>✨ Streamlined workflows for better UX</li></ul>
+    <div class="project-card">
+      <h3>ICICI Bank Customization <span class="tech-item">12 Months</span></h3>
+      <ul>
+        <li>🔧 Developed custom RM Workbench for ICICI, transforming user experience.</li>
+        <li>✨ Streamlined banking workflows and championed client satisfaction.</li>
+      </ul>
+      <div class="tech-stack"><span class="tech-item">Java Spring Boot</span><span class="tech-item">Angular</span><span class="tech-item">Finacle</span></div>
     </div>
-    <div class="project-card"><h3>Infy eKart <span class="tech-item">3 Months</span></h3>
-      <ul><li>🛒 Built secure e-commerce app (Angular, Spring Boot, MySQL)</li><li>🔐 Implemented JWT auth, product listing, shopping cart</li></ul>
+    <div class="project-card">
+      <h3>Infy eKart <span class="tech-item">3 Months</span></h3>
+      <ul>
+        <li>🛒 Built a secure e-commerce app (Angular, Spring Boot, MySQL) from scratch.</li>
+        <li>🔐 Implemented JWT authentication, product catalog, seamless cart, and robust backend.</li>
+      </ul>
+      <div class="tech-stack"><span class="tech-item">Java</span><span class="tech-item">Angular</span><span class="tech-item">Spring Boot</span><span class="tech-item">MySQL</span></div>
     </div>
   </div>
 </div>
 
-<!-- Certifications -->
+<!-- Certifications Section -->
 <div id="certifications" class="section-card">
   <h2>Certifications &amp; Education</h2>
   <div class="certs">
-    <div class="cert-card"><h3>Infosys Certifications</h3>
-      <ul><li>✅ Java-Angular Full Stack Development</li><li>✅ Spring Boot Service Layer</li><li>✅ REST API &amp; SPA with Angular</li></ul>
+    <div class="cert-card">
+      <h3>Infosys Certifications</h3>
+      <ul>
+        <li>✅ Java-Angular Full Stack Development</li>
+        <li>✅ Spring Boot Service Layer Architect</li>
+        <li>✅ REST API &amp; SPA with Angular</li>
+      </ul>
     </div>
-    <div class="cert-card"><h3>Education</h3>
-      <ul><li>🎓 B.Tech/B.E. in Civil Engineering</li><li>🏫 Visveswaraiah Technological University (VTU), 2022</li></ul>
+    <div class="cert-card">
+      <h3>Education</h3>
+      <ul>
+        <li>🎓 Bachelor of Engineering, Civil Engineering</li>
+        <li>🏫 Visveswaraiah Technological University (VTU), 2022</li>
+      </ul>
     </div>
   </div>
 </div>
 
-<!-- Resume -->
+<!-- Resume Section -->
 <div id="resume" class="section-card">
   <h2>Download My Resume</h2>
   <div class="resume-box" style="text-align:center;">
-    <b>Karthik M - Full Stack Developer</b>
-    <p>Level up your tech team with my expertise in banking solutions, Java Spring Boot & Angular.<br>Get my ATS-optimized resume showcasing real business impact.</p>
+    <b style="font-size:1.12em;letter-spacing:.04em;">Karthik M - Full Stack Developer</b>
+    <p style="font-family:'Space Grotesk',Arial,sans-serif;">
+      <span style="color:#20e3b2;">Level up your tech team</span> with my proven expertise in digital banking, secure web engineering, and Agile delivery.<br>
+      Get my streamlined, ATS-friendly resume—see why Infosys trusts me for their top banking apps!
+    </p>
     <a href="resume.pdf" class="cta-btn" download><i class="fas fa-file-arrow-down"></i> Download Resume (PDF)</a>
   </div>
 </div>
@@ -192,17 +525,32 @@
 <!-- Footer -->
 <div class="footer" id="contact">
   <div class="social-links">
-    <a href="https://linkedin.com/in/karthik-m-24077b219/" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/karthikmuniraju" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="mailto:mkarthik2000@icloud.com"><i class="fas fa-envelope"></i></a>
+    <a href="https://linkedin.com/in/karthik-m-24077b219/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/karthikmuniraju" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="mailto:mkarthik2000@icloud.com" title="Email"><i class="fas fa-envelope"></i></a>
   </div>
-  <div><b>Karthik M</b> · Bengaluru, India<br/>(+91) 9972503858 · mkarthik2000@icloud.com
+  <div>
+    <b>Karthik M</b> · Bengaluru, India<br/>
+    (+91) 9972503858 · mkarthik2000@icloud.com
     <div style="margin-top:.6em;opacity:.7;">&copy; 2025 Karthik M. All Rights Reserved.</div>
   </div>
 </div>
 
+<!-- Loader + Section Animation Scripts -->
 <script>
-  window.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("loader"),t=document.getElementById("loader-percentage"),n=document.getElementById("progressBar");let o=0;const r=Math.floor(3800+2500*Math.random()),a=r/100,l=setInterval(()=>{o++,t.textContent=o+"%",n.style.width=o+"%",o>=100&&(clearInterval(l),e.classList.add("fade-out"))},a)});let lastScrollTop=0;window.addEventListener("scroll",function(){let e=window.pageYOffset||document.documentElement.scrollTop;document.body.classList.toggle("scroll-up",e<lastScrollTop),lastScrollTop=e<=0?0:e},!1);const cards=document.querySelectorAll(".section-card"),observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting?e.target.classList.add("visible"):e.target.classList.remove("visible")})},{threshold:.15});cards.forEach(e=>observer.observe(e));
+  window.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("loader"),t=document.getElementById("loader-percentage"),n=document.getElementById("progressBar");let o=0;const r=Math.floor(3800+2500*Math.random()),a=r/100,l=setInterval(()=>{o++,t.textContent=o+"%",n.style.width=o+"%",o>=100&&(clearInterval(l),e.classList.add("fade-out"))},a)});
+  let lastScrollTop=0;
+  window.addEventListener("scroll",function(){
+    let e=window.pageYOffset||document.documentElement.scrollTop;
+    document.body.classList.toggle("scroll-up",e<lastScrollTop),lastScrollTop=e<=0?0:e;
+  },!1);
+  const cards=document.querySelectorAll(".section-card"),
+        observer=new IntersectionObserver(e=>{
+          e.forEach(e=>{
+            e.isIntersecting?e.target.classList.add("visible"):e.target.classList.remove("visible");
+          })
+        },{threshold:.17});cards.forEach(e=>observer.observe(e));
 </script>
+
 </body>
 </html>
